@@ -3,7 +3,7 @@
 namespace App\Controller\Administration\Crud;
 
 use App\Entity\Cagnotte;
-use App\Form\CagnotteType;
+use App\Form\Crud\CagnotteType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,13 +23,15 @@ class CagnotteController extends AbstractController
             ->getRepository(Cagnotte::class)
             ->findAll();
 
-        return $this->render('cagnotte/index.html.twig', [
+        return $this->render('administration/crud/cagnotte/index.html.twig', [
             'cagnottes' => $cagnottes,
         ]);
     }
 
     /**
      * @Route("/new", name="cagnotte_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -45,7 +47,7 @@ class CagnotteController extends AbstractController
             return $this->redirectToRoute('cagnotte_index');
         }
 
-        return $this->render('cagnotte/new.html.twig', [
+        return $this->render('administration/crud/cagnotte/new.html.twig', [
             'cagnotte' => $cagnotte,
             'form' => $form->createView(),
         ]);
@@ -53,16 +55,21 @@ class CagnotteController extends AbstractController
 
     /**
      * @Route("/{id}", name="cagnotte_show", methods={"GET"})
+     * @param Cagnotte $cagnotte
+     * @return Response
      */
     public function show(Cagnotte $cagnotte): Response
     {
-        return $this->render('cagnotte/show.html.twig', [
+        return $this->render('administration/crud/cagnotte/show.html.twig', [
             'cagnotte' => $cagnotte,
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="cagnotte_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Cagnotte $cagnotte
+     * @return Response
      */
     public function edit(Request $request, Cagnotte $cagnotte): Response
     {
@@ -75,7 +82,7 @@ class CagnotteController extends AbstractController
             return $this->redirectToRoute('cagnotte_index');
         }
 
-        return $this->render('cagnotte/edit.html.twig', [
+        return $this->render('administration/crud/cagnotte/edit.html.twig', [
             'cagnotte' => $cagnotte,
             'form' => $form->createView(),
         ]);
@@ -83,10 +90,13 @@ class CagnotteController extends AbstractController
 
     /**
      * @Route("/{id}", name="cagnotte_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Cagnotte $cagnotte
+     * @return Response
      */
     public function delete(Request $request, Cagnotte $cagnotte): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$cagnotte->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $cagnotte->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($cagnotte);
             $entityManager->flush();
