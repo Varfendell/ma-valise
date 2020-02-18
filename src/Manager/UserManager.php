@@ -43,7 +43,15 @@ class UserManager extends AbstractManager
         return false;
     }
 
-    public function createUser($user)
+    /**
+     * @param User $user
+     * @throws \Exception
+     */
+    public function createUser(User $user)
     {
+        $user->setSalt(sha1(random_bytes(100)));
+        $password = $this->encoder->encodePassword($user, $user->getPassword());
+        $user->setPassword($password);
+        $this->save($user);
     }
 }

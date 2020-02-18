@@ -36,10 +36,9 @@ class WelcomeController extends AbstractController
             $password = $data['password'];
             $isCorrect = $userManager->authenticateUser($email, $password);
             if ($isCorrect) {
-
                 return $this->redirectToRoute('welcome');
             }
-            $this->addFlash('warning', 'Email ou mot de passe incorrecte');
+            $this->addFlash('warning', 'Email ou mot de passe incorrecte.');
         }
         return $this->render('login/login.html.twig', [
             'form' => $form->createView(),
@@ -60,7 +59,8 @@ class WelcomeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $userManager->createUser($user);
-            return $this->render('login/create-account-success.html.twig');
+            $this->addFlash('success', 'Compte créé.');
+            return $this->redirectToRoute('app_common_welcome_login');
         }
         return $this->render('login/create-account.html.twig', [
             'form' => $form->createView(),

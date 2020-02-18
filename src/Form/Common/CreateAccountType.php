@@ -22,20 +22,36 @@ class CreateAccountType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', TextType::class, [])
-            ->add('birthdate', DateType::class)
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('city', TextType::class)
-            ->add('phone', TextType::class)
-            ->add('picture', FileType::class)
+            ->add('email', TextType::class, [
+                'label' => false,
+            ])
+            ->add('birthdate', DateType::class, [
+                'label' => false,
+                'widget' => 'single_text',
+                'html5' => false,
+            ])
+            ->add('firstName', TextType::class, [
+                'label' => false,
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => false,
+            ])
+            ->add('city', TextType::class, [
+                'label' => false,
+            ])
+            ->add('phone', TextType::class, [
+                'label' => false,
+            ])
+            ->add('picture', FileType::class, [
+                'label' => false,
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options' => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options' => ['label' => false],
+                'second_options' => ['label' => false],
             ]);
     }
 

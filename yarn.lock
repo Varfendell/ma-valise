@@ -708,6 +708,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@chenfengyuan/datepicker@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@chenfengyuan/datepicker/-/datepicker-1.0.9.tgz#6ba452e1b4b622d144645abb9d0b5f98a44fe487"
+  integrity sha512-ojj4R4j0ncPSQzEwqABIDzy1QWsaJsmq3fkvCrM99KKpqHqjv4DrL5f4uIIWCXwuUCpDhTChmnqddf0UADpwJQ==
+
 "@fortawesome/fontawesome-free@^5.11.2":
   version "5.12.1"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.12.1.tgz#2a98fea9fbb8a606ddc79a4680034e9d5591c550"
