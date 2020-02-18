@@ -3,10 +3,12 @@
 
 namespace App\Controller\Common;
 
-use App\Manager\UserManager;
 use App\Form\Common\AuthenticationType;
 use App\Form\Common\CreateAccountType;
+use App\Manager\UserManager;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,7 +38,7 @@ class WelcomeController extends AbstractController
             $password = $data['password'];
             $isCorrect = $userManager->authenticateUser($email, $password);
             if ($isCorrect) {
-                return $this->redirectToRoute('welcome');
+                return $this->redirectToRoute('app_common_welcome_accueil');
             }
             $this->addFlash('warning', 'Email ou mot de passe incorrecte.');
         }
@@ -50,9 +52,10 @@ class WelcomeController extends AbstractController
      *
      * @param Request $request
      * @param UserManager $userManager
-     * @return Response
+     * @return RedirectResponse|Response
+     * @throws Exception
      */
-    public function CreateAccountAction(Request $request, UserManager $userManager)
+    public function createAccountAction(Request $request, UserManager $userManager)
     {
         $form = $this->createForm(CreateAccountType::class);
         $form->handleRequest($request);
@@ -65,5 +68,20 @@ class WelcomeController extends AbstractController
         return $this->render('login/create-account.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/accueil")
+     *
+     * @return Response
+     */
+    public function accueilAction()
+    {
+        $role = 'user';// 'admin';
+        if ($role == 'admin') {
+            return $this->redirectToRoute('app_administration_default_index');
+        } else {
+            return $this->redirectToRoute('app_front_default_index');
+        }
     }
 }

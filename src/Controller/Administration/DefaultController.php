@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Controller\Front;
+namespace App\Controller\Administration;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,8 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/administration")
  *
- * Class DefaultController
- * @package App\Controller\Front
+ * Class WelcomeController
+ * @package App\Controller\Common
  */
 class DefaultController extends AbstractController
 {
@@ -23,6 +23,6 @@ class DefaultController extends AbstractController
      */
     public function indexAction()
     {
-        return $this->render(':Front:index.html.twig');
+        return $this->render('Administration/index.html.twig');
     }
 }

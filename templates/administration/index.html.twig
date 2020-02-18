@@ -1,0 +1,28 @@
+{% extends 'Administration/default.html.twig' %}
+
+{% block header %}Page d'accueil{% endblock %}
+
+{% block content %}
+    <p>Bienvenue sur le site d'administration de Ma Valise. Vous pourrez ici <a href="#">voir les projets</a> qui ont
+        été créé par les utilisateurs,
+        <a href="#">Voir les utilisateurs inscrit</a> et vous pourrez même <a href="#">voir les cagnottes en cours</a>.
+    </p>
+    <p>Vous pouvez également <a href="#">Gérer les voyages</a> proposé par les entreprises.</p>
+    <div class="row">
+        <div class="col-6">
+            <button type="button" class="btn btn-block btn-info btn-lg">Voir les projets</button>
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-block btn-success btn-lg">Gérer les voyages</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <button type="button" class="btn btn-block btn-dark btn-lg">Administrer les cagnottes</button>
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-block btn-secondary btn-lg">Rendre visite aux utilisateurs</button>
+        </div>
+    </div>
+{% endblock %}
