@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Common;
+namespace App\Controller\Administration\Crud;
 
 use App\Entity\Project;
 use App\Form\ProjectType;

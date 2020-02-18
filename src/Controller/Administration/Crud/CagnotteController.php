@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Common;
+namespace App\Controller\Administration\Crud;
 
 use App\Entity\Cagnotte;
 use App\Form\CagnotteType;

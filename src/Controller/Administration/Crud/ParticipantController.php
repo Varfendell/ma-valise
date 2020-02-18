@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Common;
+namespace App\Controller\Administration\Crud;
 
 use App\Entity\Participant;
 use App\Form\ParticipantType;
