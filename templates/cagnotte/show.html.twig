@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cagnotte{% endblock %}
+
+{% block body %}
+    <h1>Cagnotte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cagnotte.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ cagnotte.url }}</td>
+            </tr>
+            <tr>
+                <th>Notification</th>
+                <td>{{ cagnotte.notification ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cagnotte_index') }}">back to list</a>
+
+    <a href="{{ path('cagnotte_edit', {'id': cagnotte.id}) }}">edit</a>
+
+    {{ include('cagnotte/_delete_form.html.twig') }}
+{% endblock %}

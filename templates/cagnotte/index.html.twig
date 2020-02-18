@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cagnotte index{% endblock %}
+
+{% block body %}
+    <h1>Cagnotte index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Notification</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cagnotte in cagnottes %}
+            <tr>
+                <td>{{ cagnotte.id }}</td>
+                <td>{{ cagnotte.url }}</td>
+                <td>{{ cagnotte.notification ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('cagnotte_show', {'id': cagnotte.id}) }}">show</a>
+                    <a href="{{ path('cagnotte_edit', {'id': cagnotte.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cagnotte_new') }}">Create new</a>
+{% endblock %}
