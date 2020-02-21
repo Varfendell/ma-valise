@@ -4,10 +4,9 @@
 
 {% block content %}
     <div class="card-header">
-        <h3 class="card-title">Créer son comtpe</h3>
+        <h3 class="text-center text-orange">Ouvrir ma valise</h3>
     </div>
     <div class="card-body login-card-body">
-        <p class="login-box-msg">Connecter vous pour profiter pleinement de l'experience</p>
         {{ form_start(form) }}
         <div class="input-group mb-3">
             {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'email'}}) }}
@@ -25,23 +24,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="icheck-primary">
-                <input type="checkbox" id="remember">
-                <label for="remember">
-                    Se souvenir de moi
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+        <div class="row bg-teal color-palette">
+            <button type="submit" class="btn btn-block"><span style="color: white">S'identifer</span></button>
         </div>
         {{ form_end(form) }}
-        <p class="mb-1">
-            <a href="forgot-password.html.twig">J'ai oublié mon mot de passe</a>
-        </p>
-        <p class="mb-0">
-            <a href="{{ path('app_common_welcome_createaccount') }}" class="text-center">Créer son compte</a>
-        </p>
+        <a href="forgot-password.html.twig"><p class="text-teal">Mot de passe oublié</p></a>
+        <a href="{{ path('app_common_welcome_createaccount') }}"><p class="text-teal">Créer son compte</p></a>
     </div>
 {% endblock %}
