@@ -25,26 +25,26 @@ class CreateAccountType extends AbstractType
             ->add('email', TextType::class, [
                 'label' => false,
             ])
-            ->add('birthdate', DateType::class, [
-                'label' => false,
-                'widget' => 'single_text',
-                'html5' => false,
-            ])
-            ->add('firstName', TextType::class, [
-                'label' => false,
-            ])
-            ->add('lastName', TextType::class, [
-                'label' => false,
-            ])
-            ->add('city', TextType::class, [
-                'label' => false,
-            ])
-            ->add('phone', TextType::class, [
-                'label' => false,
-            ])
-            ->add('picture', FileType::class, [
-                'label' => false,
-            ])
+//            ->add('birthdate', DateType::class, [
+//                'label' => false,
+//                'widget' => 'single_text',
+//                'html5' => false,
+//            ])
+//            ->add('firstName', TextType::class, [
+//                'label' => false,
+//            ])
+//            ->add('lastName', TextType::class, [
+//                'label' => false,
+//            ])
+//            ->add('city', TextType::class, [
+//                'label' => false,
+//            ])
+//            ->add('phone', TextType::class, [
+//                'label' => false,
+//            ])
+//            ->add('picture', FileType::class, [
+//                'label' => false,
+//            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',

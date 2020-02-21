@@ -4,28 +4,10 @@
 
 {% block content %}
     <div class="card-header">
-        <h3 class="card-title">Créer son comtpe</h3>
+        <h3 class="text-center text-orange">Inscription</h3>
     </div>
     {{ form_start(form) }}
     <div class="card-body">
-        <div class="input-group mb-3">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fa fa-user"></span>
-                </div>
-            </div>
-            {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-        </div>
-        {{ form_errors(form.lastName) }}
-        <div class="input-group mb-3">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fa fa-user"></span>
-                </div>
-            </div>
-            {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prenom'}}) }}
-        </div>
-        {{ form_errors(form.firstName) }}
         <div class="input-group mb-3">
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -53,54 +35,13 @@
             {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmez le mot de passe'}}) }}
         </div>
         {{ form_errors(form.password.second) }}
-        <div class="input-group mb-3">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fa fa-calendar"></span>
-                </div>
-            </div>
-            {{ form_widget(form.birthdate, {'attr': {'class': 'form-control', 'placeholder': 'Date de naissance'}}) }}
-        </div>
-        {{ form_errors(form.birthdate) }}
-        <div class="input-group mb-3">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fa fa-city"></span>
-                </div>
-            </div>
-            {{ form_widget(form.city, {'attr': {'type': 'text', 'class': 'form-control', 'placeholder': 'Ville'}}) }}
-        </div>
-        {{ form_errors(form.city) }}
-        <div class="input-group mb-3">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fa fa-phone"></span>
-                </div>
-            </div>
-            {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
-        </div>
-        {{ form_errors(form.phone) }}
-        <div class="input-group mb-3">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fa fa-image"></span>
-                </div>
-            </div>
-            <div class="custom-file">
-                {{ form_widget(form.picture, {'attr': {'class': 'custom-file-input'}}) }}
-                <label class="custom-file-label" for="create_account_picture">Choisir une image</label>
-            </div>
-        </div>
-        {{ form_errors(form.picture) }}
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-block">
-                Register
-            </button>
-            <a type="button" class="btn btn-success btn-block" href="{{ path('app_common_welcome_login') }}">
-                J'ai déjà un compte
-            </a>
+            <div class="row bg-teal color-palette">
+                <button type="submit" class="btn btn-block"><span style="color: white">Créer</span></button>
+            </div>
         </div>
         {{ form_end(form) }}
+        <a href="{{ path('app_common_welcome_login') }}"><p class="text-teal">J'ai déjà une valise ?</p></a>
     </div>
 {% endblock %}
 
@@ -115,7 +56,7 @@
                 singleDatePicker: true,
                 showDropdowns: true,
                 minYear: 1901,
-                maxYear: parseInt(moment().format('YYYY'),10)
+                maxYear: parseInt(moment().format('YYYY'), 10)
             });
         });
     </script>
