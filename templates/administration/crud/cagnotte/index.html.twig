@@ -1,7 +1,7 @@
 {% extends 'Administration/default.html.twig' %}
 
-{% block title %}Cagnotte Index{% endblock %}
-{% block header %}Cagnotte Index{% endblock %}
+{% block title %}Cagnottes{% endblock %}
+{% block header %}Cagnottes{% endblock %}
 
 {% block content %}
     <div class="row">
@@ -9,7 +9,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <i class="fas fa-edit"></i>
+                        <i class="fa fa-paperclip"></i>
                         Liste des cagnottes
                     </h3>
                     <div class="card-tools">
@@ -25,7 +25,7 @@
                         <thead>
                         <tr>
                             <th style="width: 10%">Id</th>
-                            <th style="width: 70%">Url</th>
+                            <th style="width: 70%"><i class="fa fa-smile-wink"></i> Url Paypal</th>
                             <th style="width: 10%">Notification</th>
                             <th style="width: 10%">actions</th>
                         </tr>
@@ -38,7 +38,7 @@
                                 <td>{{ cagnotte.notification ? 'Yes' : 'No' }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ path('cagnotte_show', {'id': cagnotte.id}) }}" class="btn btn-secondary"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ path('cagnotte_show', {'id': cagnotte.id}) }}" class="btn bg-gradient-orange"><i class="fas fa-eye"></i></a>
                                         <a href="{{ path('cagnotte_edit', {'id': cagnotte.id}) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
                                     </div>
                                 </td>

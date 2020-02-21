@@ -35,6 +35,14 @@ class Cagnotte
      */
     private $notification = '0';
 
+    /**
+     * @var Project
+     *
+     * @ORM\OneToOne(targetEntity="Project", mappedBy="cagnotte")
+     * })
+     */
+    private $project;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +69,24 @@ class Cagnotte
     {
         $this->notification = $notification;
 
+        return $this;
+    }
+
+    /**
+     * @return Project
+     */
+    public function getProject(): Project
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param Project $project
+     * @return Cagnotte
+     */
+    public function setProject(Project $project): Cagnotte
+    {
+        $this->project = $project;
         return $this;
     }
 

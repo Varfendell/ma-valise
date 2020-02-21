@@ -10,12 +10,12 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-edit"></i>
-                        Cagnotte {{ cagnotte.id }}
+                        Cagnotte {{ cagnotte.project.user.email }}
                     </h3>
                     <div class="card-tools">
                         <ul class="nav nav-pills ml-auto">
                             <li class="nav-item">
-                                <a class="btn btn-success float-right" href="{{ path('cagnotte_index') }}">back to list</a>
+                                <a class="btn bg-gradient-pink float-right" href="{{ path('cagnotte_index') }}">back to list</a>
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-info float-right" href="{{ path('cagnotte_edit', {'id': cagnotte.id}) }}">edit</a>
@@ -31,7 +31,7 @@
                             <td>{{ cagnotte.id }}</td>
                         </tr>
                         <tr>
-                            <th>Url</th>
+                            <th>Url Paypal</th>
                             <td>{{ cagnotte.url }}</td>
                         </tr>
                         <tr>

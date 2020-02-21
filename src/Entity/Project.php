@@ -50,17 +50,15 @@ class Project
     private $description;
 
     /**
-     * @var \Cagnotte
+     * @var Cagnotte
      *
-     * @ORM\ManyToOne(targetEntity="Cagnotte")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cagnotte", referencedColumnName="id")
-     * })
+     * @ORM\OneToOne(targetEntity="Cagnotte", inversedBy="project")
+     * @ORM\JoinColumn(name="cagnotte", referencedColumnName="id")
      */
     private $cagnotte;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
