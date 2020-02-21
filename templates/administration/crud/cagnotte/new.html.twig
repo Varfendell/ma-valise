@@ -1,11 +1,31 @@
 {% extends 'Administration/default.html.twig' %}
 
 {% block title %}New Cagnotte{% endblock %}
+{% block header %}New Cagnotte{% endblock %}
 
 {% block content %}
-    <h1>Create new Cagnotte</h1>
-
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-edit"></i>
+                    Liste des cagnottes
+                </h3>
+                <div class="card-tools">
+                    <ul class="nav nav-pills ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('cagnotte_new') }}">Create new</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body pad">
     {{ include('administration/crud/cagnotte/_form.html.twig') }}
 
     <a href="{{ path('cagnotte_index') }}">back to list</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

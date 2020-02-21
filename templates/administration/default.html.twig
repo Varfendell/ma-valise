@@ -121,32 +121,20 @@
                              with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="{{ path('cagnotte_index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">Cagnottes</span>
-                                </p>
+                                <i class="nav-icon fas fa-box"></i>
+                                <p>Cagnottes</p>
                             </a>
                             <a href="{{ path('user_index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">Users</span>
-                                </p>
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Users</p>
                             </a>
                             <a href="{{ path('project_index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">Projects</span>
-                                </p>
+                                <i class="nav-icon fas fa-plane"></i>
+                                <p>Projects</p>
                             </a>
                             <a href="{{ path('participant_index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">Participants</span>
-                                </p>
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Participants</p>
                             </a>
                         </li>
                     </ul>
@@ -162,12 +150,12 @@
                         <div class="col-sm-6">
                             <h1 class="m-0 text-dark">{% block header %}{% endblock %}</h1>
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">bienvenue</li>
-                            </ol>
-                        </div>
+{#                        <div class="col-sm-6">#}
+{#                            <ol class="breadcrumb float-sm-right">#}
+{#                                <li class="breadcrumb-item"><a href="#">Home</a></li>#}
+{#                                <li class="breadcrumb-item active">bienvenue</li>#}
+{#                            </ol>#}
+{#                        </div>#}
                     </div>
                 </div>
             </div>
@@ -176,20 +164,13 @@
                     {% block content %}{% endblock %}
                 </div>
             </section>
-
         </div>
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2019-2020 Ma Valise.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.2
+                <b>Version</b> 1.0
             </div>
         </footer>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
 {% endblock %}
