@@ -13,7 +13,6 @@ class CagnotteType extends AbstractType
     {
         $builder
             ->add('url')
-            ->add('notification')
         ;
     }
 

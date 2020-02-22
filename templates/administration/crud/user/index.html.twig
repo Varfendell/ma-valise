@@ -3,11 +3,26 @@
 {% block title %}User Index{% endblock %}
 
 {% block content %}
-    <h1>User index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fa fa-paperclip"></i>
+                    Liste des utilisateurs
+                </h3>
+                <div class="card-tools">
+                    <ul class="nav nav-pills ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('cagnotte_new') }}">Create new</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body pad">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
                 <th>Id</th>
                 <th>FirstName</th>
                 <th>LastName</th>
@@ -35,8 +50,10 @@
                 <td>{{ user.city }}</td>
                 <td>{{ user.picture }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                    <div class="btn-group btn-group-sm">
+                        <a href="{{ path('user_show', {'id': user.id}) }}" class="btn bg-gradient-orange"><i class="fas fa-eye"></i></a>
+                        <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                    </div>
                 </td>
             </tr>
         {% else %}
@@ -45,7 +62,9 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('user_new') }}">Create new</a>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

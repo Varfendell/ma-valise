@@ -1,4 +1,30 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="form-group">
+    {{ form_row(form.firstName, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.lastName, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.picture, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.phone, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.city, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.birthdate, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.password, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.salt, {'attr': {'class': 'form-control'}}) }}
+</div>
+<button class="btn btn-default">Envoyer</button>
 {{ form_end(form) }}

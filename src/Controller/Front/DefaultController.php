@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/administration")
+ * @Route("/front")
  *
  * Class DefaultController
  * @package App\Controller\Front
@@ -23,6 +23,6 @@ class DefaultController extends AbstractController
      */
     public function indexAction()
     {
-        return $this->render(':Front:index.html.twig');
+        return $this->render('front/index.html.twig');
     }
 }
