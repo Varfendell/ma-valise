@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="project", indexes={@ORM\Index(name="project_fk", columns={"cagnotte"}), @ORM\Index(name="projet_fk", columns={"user"})})
  * @ORM\Entity
  */
-class Project
+class Project extends AbstractEntity
 {
     /**
      * @var int
@@ -31,14 +33,14 @@ class Project
     private $name;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      *
      * @ORM\Column(name="date_start", type="date", nullable=true)
      */
     private $dateStart;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      *
      * @ORM\Column(name="date_end", type="date", nullable=true)
      */
@@ -78,6 +80,7 @@ class Project
 
     public function __construct()
     {
+        parent::__construct();
         $this->participants = new ArrayCollection();
     }
 
@@ -98,24 +101,24 @@ class Project
         return $this;
     }
 
-    public function getDateStart(): ?\DateTimeInterface
+    public function getDateStart(): ?DateTimeInterface
     {
         return $this->dateStart;
     }
 
-    public function setDateStart(?\DateTimeInterface $dateStart): self
+    public function setDateStart(?DateTimeInterface $dateStart): self
     {
         $this->dateStart = $dateStart;
 
         return $this;
     }
 
-    public function getDateEnd(): ?\DateTimeInterface
+    public function getDateEnd(): ?DateTimeInterface
     {
         return $this->dateEnd;
     }
 
-    public function setDateEnd(?\DateTimeInterface $dateEnd): self
+    public function setDateEnd(?DateTimeInterface $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
 

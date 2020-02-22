@@ -87,8 +87,13 @@
                                 <tr>
                                     <td><a href="{{ path('project_show', {'id': project.id}) }}">{{ project.name }}</a>
                                     </td>
-                                    <td><a target="_blank" href="{{ project.cagnotte.url }}">Acceder à la cagnotte du
-                                            projet</a></td>
+                                    <td>
+                                        {% if project.cagnotte is null %}
+                                            <a href="{{ path('cagnotte_new') }}" class="bg-gradient-pink">Créer une cagnotte</a>
+                                        {% else %}
+                                        <a target="_blank" href="{{ project.cagnotte.url }}">Acceder à la cagnotte du projet</a>
+                                            {% endif %}
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>

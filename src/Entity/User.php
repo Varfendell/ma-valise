@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User implements UserInterface
+class User extends AbstractEntity implements UserInterface
 {
     /**
      * @var int
@@ -98,6 +98,7 @@ class User implements UserInterface
 
     public function __construct()
     {
+        parent::__construct();
         $this->projects = new ArrayCollection();
     }
 

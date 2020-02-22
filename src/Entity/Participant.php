@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="participant", indexes={@ORM\Index(name="participant_fk", columns={"project"})})
  * @ORM\Entity
  */
-class Participant
+class Participant extends AbstractEntity
 {
     /**
      * @var int

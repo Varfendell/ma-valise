@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cagnotte")
  * @ORM\Entity
  */
-class Cagnotte
+class Cagnotte extends AbstractEntity
 {
     /**
      * @var int
@@ -42,6 +42,7 @@ class Cagnotte
      * })
      */
     private $project;
+
 
     public function getId(): ?int
     {
