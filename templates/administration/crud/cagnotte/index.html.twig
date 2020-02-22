@@ -34,7 +34,7 @@
                         {% for cagnotte in cagnottes %}
                             <tr>
                                 <td>{{ cagnotte.id }}</td>
-                                <td><a href="{{ cagnotte.url }}">{{ cagnotte.url }}</a></td>
+                                <td><a href="{{ cagnotte.url }}" target="_blank">{{ cagnotte.url }}</a></td>
                                 <td>{{ cagnotte.notification ? 'Yes' : 'No' }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">

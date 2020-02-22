@@ -76,13 +76,6 @@ class User extends AbstractEntity implements UserInterface
     private $city;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="picture", type="blob", length=65535, nullable=true)
-     */
-    private $picture;
-
-    /**
      * @var Collection
      *
      * @ORM\OneToMany(targetEntity="Project", mappedBy="user")

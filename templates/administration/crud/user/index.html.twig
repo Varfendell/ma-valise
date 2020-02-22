@@ -28,11 +28,7 @@
                 <th>LastName</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Birthdate</th>
-                <th>Password</th>
-                <th>Salt</th>
                 <th>City</th>
-                <th>Picture</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -44,11 +40,7 @@
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.phone }}</td>
-                <td>{{ user.birthdate ? user.birthdate|date('Y-m-d') : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.salt }}</td>
                 <td>{{ user.city }}</td>
-                <td>{{ user.picture }}</td>
                 <td>
                     <div class="btn-group btn-group-sm">
                         <a href="{{ path('user_show', {'id': user.id}) }}" class="btn bg-gradient-orange"><i class="fas fa-eye"></i></a>

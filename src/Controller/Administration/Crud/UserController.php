@@ -104,4 +104,15 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user_index');
     }
+
+    /**
+     * @Route("/{id}/change-password", name="user_change_password", methods={"DELETE"})
+     * @param Request $request
+     * @param User $user
+     * @return Response
+     */
+    public function changePassword(Request $request, User $user): Response
+    {
+        return $this->json(['Work in progress']);
+    }
 }

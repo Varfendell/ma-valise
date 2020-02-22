@@ -22,11 +22,7 @@ class UserType extends AbstractType
             ->add('phone', TextType::class, [
                 'required' => false,
             ])
-            ->add('password')
             ->add('city', TextType::class, [
-                'required' => false,
-            ])
-            ->add('picture', FileType::class, [
                 'required' => false,
             ]);
     }
