@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -53,7 +55,7 @@ class User implements UserInterface
     private $phone;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      *
      * @ORM\Column(name="birthdate", type="date", nullable=true)
      */
@@ -86,6 +88,7 @@ class User implements UserInterface
      * @ORM\Column(name="picture", type="blob", length=65535, nullable=true)
      */
     private $picture;
+
     /**
      * @var Collection
      *
@@ -151,12 +154,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeInterface
+    public function getBirthdate(): ?DateTimeInterface
     {
         return $this->birthdate;
     }
 
-    public function setBirthdate(?\DateTimeInterface $birthdate): self
+    public function setBirthdate(?DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
 

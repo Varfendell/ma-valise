@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,6 +68,18 @@ class Project
      * })
      */
     private $user;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Participant", mappedBy="project")
+     */
+    private $participants;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -144,5 +158,11 @@ class Project
         return $this;
     }
 
-
+    /**
+     * @return Collection<Participant>
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
 }

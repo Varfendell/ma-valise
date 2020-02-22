@@ -31,9 +31,9 @@ class Participant
     /**
      * @var string
      *
-     * @ORM\Column(name="last_nale", type="string", length=100, nullable=false)
+     * @ORM\Column(name="last_name", type="string", length=100, nullable=false)
      */
-    private $lastNale;
+    private $lastName;
 
     /**
      * @var string|null
@@ -69,14 +69,14 @@ class Participant
         return $this;
     }
 
-    public function getLastNale(): ?string
+    public function getLastName(): ?string
     {
-        return $this->lastNale;
+        return $this->lastName;
     }
 
-    public function setLastNale(string $lastNale): self
+    public function setLastName(string $lastName): self
     {
-        $this->lastNale = $lastNale;
+        $this->lastName = $lastName;
 
         return $this;
     }
