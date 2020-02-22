@@ -23,11 +23,10 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
-                                 class="img-size-50 mr-3 img-circle">
+{#                            <img src="{{ app.user.picture }}" class="img-size-50 mr-3 img-circle" alt="picture">#}
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
-                                    Brad Diesel
+{#                                    {{ app.user.firstName }}  {{ app.user.lastName }}#}
                                     <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                                 </h3>
                                 <p class="text-sm">Call me whenever you can...</p>
@@ -93,7 +92,7 @@
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{ path('app_administration_default_index') }}" class="brand-link">
-            <img src="dist/img/AdminLTELogo.png" alt="logo" class="brand-image img-circle elevation-3"
+            <img src="{{ asset('build/dist/img/logo.png') }}" alt="logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Ma Valise</span>
         </a>
