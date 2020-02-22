@@ -55,13 +55,6 @@ class User extends AbstractEntity implements UserInterface
     private $phone;
 
     /**
-     * @var DateTime|null
-     *
-     * @ORM\Column(name="birthdate", type="date", nullable=true)
-     */
-    private $birthdate;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=100, nullable=false)
@@ -151,18 +144,6 @@ class User extends AbstractEntity implements UserInterface
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function getBirthdate(): ?DateTimeInterface
-    {
-        return $this->birthdate;
-    }
-
-    public function setBirthdate(?DateTimeInterface $birthdate): self
-    {
-        $this->birthdate = $birthdate;
 
         return $this;
     }
