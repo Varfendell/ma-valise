@@ -10,12 +10,20 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-edit"></i>
-                        Cagnotte {{ cagnotte.project.user.email }}
+                        Cagnotte de
+                        <a href="{{ path('user_show', {'id': cagnotte.project.user.id}) }}" class="badge badge-primary">
+                            {{ cagnotte.project.user.firstName }} {{ cagnotte.project.user.lastName }}
+                        </a>
+                        pour le projet
+                        <a href="{{ path('project_show', {'id': cagnotte.project.id}) }}" class="badge badge-primary">
+                            {{ cagnotte.project.name }}
+                        </a>
                     </h3>
                     <div class="card-tools">
                         <ul class="nav nav-pills ml-auto">
                             <li class="nav-item">
-                                <a class="btn bg-gradient-pink float-right" href="{{ path('cagnotte_index') }}">back to list</a>
+                                <a class="btn bg-gradient-pink float-right" href="{{ path('cagnotte_index') }}">back to
+                                    list</a>
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-info float-right" href="{{ path('cagnotte_edit', {'id': cagnotte.id}) }}">edit</a>
@@ -32,11 +40,17 @@
                         </tr>
                         <tr>
                             <th>Url Paypal</th>
-                            <td>{{ cagnotte.url }}</td>
+                            <td><a href="{{ cagnotte.url }}" class="badge badge-primary">{{ cagnotte.url }}</a></td>
                         </tr>
                         <tr>
                             <th>Notification</th>
-                            <td>{{ cagnotte.notification ? 'Yes' : 'No' }}</td>
+                            <td>
+                                {% if cagnotte.notification %}
+                                    Notification non visité
+                                {% else %}
+                                    Notification visité
+                                {% endif %}
+                            </td>
                         </tr>
                         </tbody>
                     </table>
