@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use DateTime;
-use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -177,18 +175,6 @@ class User extends AbstractEntity implements UserInterface
         return $this;
     }
 
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    public function setPicture($picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
 
     /**
      * Returns the roles granted to the user.
@@ -236,5 +222,9 @@ class User extends AbstractEntity implements UserInterface
     public function getProjects(): Collection
     {
         return $this->projects;
+    }
+
+    public function getFirstNameLastName(){
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 }

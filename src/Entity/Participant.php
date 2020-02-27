@@ -43,12 +43,10 @@ class Participant extends AbstractEntity
     private $email;
 
     /**
-     * @var \Project
+     * @var Project
      *
-     * @ORM\ManyToOne(targetEntity="Project")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="project", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="participants")
+     * @ORM\JoinColumn(name="project", referencedColumnName="id")
      */
     private $project;
 

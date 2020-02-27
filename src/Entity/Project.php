@@ -64,10 +64,8 @@ class Project extends AbstractEntity
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="projects")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
     private $user;
 

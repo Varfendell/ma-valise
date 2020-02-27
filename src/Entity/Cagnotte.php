@@ -39,7 +39,6 @@ class Cagnotte extends AbstractEntity
      * @var Project
      *
      * @ORM\OneToOne(targetEntity="Project", mappedBy="cagnotte")
-     * })
      */
     private $project;
 
@@ -76,7 +75,7 @@ class Cagnotte extends AbstractEntity
     /**
      * @return Project
      */
-    public function getProject(): Project
+    public function getProject(): ?Project
     {
         return $this->project;
     }

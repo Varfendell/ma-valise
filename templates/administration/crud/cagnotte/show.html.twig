@@ -12,7 +12,7 @@
                         <i class="fas fa-edit"></i>
                         Cagnotte de
                         <a href="{{ path('user_show', {'id': cagnotte.project.user.id}) }}" class="badge badge-primary">
-                            {{ cagnotte.project.user.firstName }} {{ cagnotte.project.user.lastName }}
+                            {{ cagnotte.project.user.firstNameLastName }}
                         </a>
                         pour le projet
                         <a href="{{ path('project_show', {'id': cagnotte.project.id}) }}" class="badge badge-primary">
