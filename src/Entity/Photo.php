@@ -36,7 +36,7 @@ class Photo
     private $blob;
 
     /**
-     * @var \Hebergement
+     * @var Hebergement
      *
      * @ORM\ManyToOne(targetEntity="Hebergement")
      * @ORM\JoinColumns({
@@ -44,6 +44,47 @@ class Photo
      * })
      */
     private $herbergement;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getPictureName(): ?string
+    {
+        return $this->pictureName;
+    }
+
+    public function setPictureName(?string $pictureName): self
+    {
+        $this->pictureName = $pictureName;
+
+        return $this;
+    }
+
+    public function getBlob()
+    {
+        return $this->blob;
+    }
+
+    public function setBlob($blob): self
+    {
+        $this->blob = $blob;
+
+        return $this;
+    }
+
+    public function getHerbergement(): ?Hebergement
+    {
+        return $this->herbergement;
+    }
+
+    public function setHerbergement(?Hebergement $herbergement): self
+    {
+        $this->herbergement = $herbergement;
+
+        return $this;
+    }
 
 
 }
