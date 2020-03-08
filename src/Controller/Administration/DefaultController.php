@@ -16,13 +16,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
 
-    /**
-     * @Route("/")
-     *
-     * @return Response
-     */
-    public function indexAction()
-    {
-        return $this->render('Administration/index.html.twig');
-    }
+	/**
+	 * @Route("/")
+	 *
+	 * @return Response
+	 */
+	public function indexAction()
+	{
+		return $this->render('Administration/index.html.twig');
+	}
 }

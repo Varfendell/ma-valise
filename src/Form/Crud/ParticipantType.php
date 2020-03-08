@@ -13,25 +13,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ParticipantType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('project', EntityType::class, [
-                'class' => Project::class,
-                'choice_label' => function (Project $project) {
-                    return $project->getName();
-                },
-            ])
-        ;
-    }
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
+		$builder->add('firstName', TextType::class)->add('lastName', TextType::class)->add('email', EmailType::class)->add('project', EntityType::class, ['class' => Project::class, 'choice_label' => function (Project $project) {
+				return $project->getName();
+			},]);
+	}
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => Participant::class,
-        ]);
-    }
+	public function configureOptions(OptionsResolver $resolver)
+	{
+		$resolver->setDefaults(['data_class' => Participant::class,]);
+	}
 }

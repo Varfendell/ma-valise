@@ -7,6 +7,9 @@
         <h3 class="text-center text-orange">Ouvrir ma valise</h3>
     </div>
     <div class="card-body login-card-body">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
         {{ form_start(form) }}
         <div class="input-group mb-3">
             {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'email'}}) }}
@@ -27,6 +30,7 @@
         <div class="row bg-teal color-palette">
             <button type="submit" class="btn btn-block"><span style="color: white">S'identifer</span></button>
         </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         {{ form_end(form) }}
         <a href="forgot-password.html.twig"><p class="text-teal">Mot de passe oublié</p></a>
         <a href="{{ path('app_common_welcome_createaccount') }}"><p class="text-teal">Créer son compte</p></a>

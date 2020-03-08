@@ -13,23 +13,23 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProjectType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('name', TextType::class)->add('dateStart')->add('dateEnd')->add('description')->add('cagnotte', EntityType::class, ['class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
-                if (!empty($cagnotte->getProject())) {
-                    $label = 'Cagnotte ' . $cagnotte->getId() . ' du projet ' . $cagnotte->getProject()->getName();
-                }
-                else {
-                    $label = 'Cagnotte ' . $cagnotte->getId() . ' sans projet ';
-                }
-                return $label;
-            },])->add('user', EntityType::class, ['class' => User::class, 'choice_label' => function (User $user) {
-                return $user->getFirstNameLastName();
-            },]);
-    }
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
+		$builder->add('name', TextType::class)->add('dateStart')->add('dateEnd')->add('description')->add('cagnotte', EntityType::class, ['class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
+			if (!empty($cagnotte->getProject())) {
+				$label = 'Cagnotte ' . $cagnotte->getId() . ' du projet ' . $cagnotte->getProject()->getName();
+			}
+			else {
+				$label = 'Cagnotte ' . $cagnotte->getId() . ' sans projet ';
+			}
+			return $label;
+		},])->add('user', EntityType::class, ['class' => User::class, 'choice_label' => function (User $user) {
+			return $user->getFirstNameLastName();
+		},]);
+	}
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(['data_class' => Project::class,]);
-    }
+	public function configureOptions(OptionsResolver $resolver)
+	{
+		$resolver->setDefaults(['data_class' => Project::class,]);
+	}
 }
