@@ -15,8 +15,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User extends AbstractEntity implements UserInterface
 {
-	const ADMIN = 'ADMIN';
-	const USER = 'USER';
+	const ROLE_ADMIN = 'ROLE_ADMIN';
+	const ROLE_USER = 'ROLE_USER';
 
 
 	/**
@@ -174,7 +174,7 @@ class User extends AbstractEntity implements UserInterface
 	 */
 	public function setRoleAdmin(): User
 	{
-		$this->roles = json_encode([self::ADMIN]);
+		$this->roles = json_encode([self::ROLE_ADMIN]);
 		return $this;
 	}
 
@@ -183,7 +183,7 @@ class User extends AbstractEntity implements UserInterface
 	 */
 	public function setRoleUser(): User
 	{
-		$this->roles = json_encode([self::USER]);
+		$this->roles = json_encode([self::ROLE_USER]);
 		return $this;
 	}
 
