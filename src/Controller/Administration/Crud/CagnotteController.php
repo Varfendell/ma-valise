@@ -2,9 +2,9 @@
 
 namespace App\Controller\Administration\Crud;
 
+use App\Controller\Administration\DefaultController;
 use App\Entity\Cagnotte;
 use App\Form\Crud\CagnotteType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/cagnotte")
  */
-class CagnotteController extends AbstractController
+class CagnotteController extends DefaultController
 {
     /**
      * @Route("/", name="cagnotte_index", methods={"GET"})

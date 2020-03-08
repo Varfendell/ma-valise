@@ -2,9 +2,9 @@
 
 namespace App\Controller\Administration\Crud;
 
+use App\Controller\Administration\DefaultController;
 use App\Entity\User;
 use App\Form\Crud\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/user")
  */
-class UserController extends AbstractController
+class UserController extends DefaultController
 {
     /**
      * @Route("/", name="user_index", methods={"GET"})

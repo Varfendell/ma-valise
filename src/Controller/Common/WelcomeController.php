@@ -12,39 +12,60 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
- * @Route("/welcome")
- *
  * Class WelcomeController
  * @package App\Controller\Common
  */
 class WelcomeController extends AbstractController
 {
+
     /**
-     * @Route("/login")
+     * @Route("/login", name="login")
      *
      * @param Request $request
      * @param UserManager $userManager
+     * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function loginAction(Request $request, UserManager $userManager)
+    public function loginAction(
+        Request $request,
+        UserManager $userManager,
+        AuthenticationUtils $authenticationUtils
+    )
     {
+         if ($this->getUser()) {
+             return $this->redirectToRoute('target_path');
+         }
+
         $form = $this->createForm(AuthenticationType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $email = $data['email'];
-            $password = $data['password'];
-            $isCorrect = $userManager->authenticateUser($email, $password);
-            if ($isCorrect) {
-                return $this->redirectToRoute('app_common_welcome_accueil');
-            }
-            $this->addFlash('warning', 'Email ou mot de passe incorrecte.');
-        }
+
+        // get the login error if there is one
+        $authenticationUtils->getLastAuthenticationError();
+
+//        $form->handleRequest($request);
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $data = $form->getData();
+//            $email = $data['email'];
+//            $password = $data['password'];
+//            $isCorrect = $userManager->authenticateUser($email, $password);
+//            if ($isCorrect) {
+//                return $this->redirectToRoute('app_common_welcome_accueil');
+//            }
+//            $this->addFlash('warning', 'Email ou mot de passe incorrecte.');
+//        }
         return $this->render('login/login.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/logout")
+     */
+    public function logout()
+    {
+        return $this->redirectToRoute('app_common_welcome_login');
     }
 
     /**

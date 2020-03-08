@@ -1,4 +1,14 @@
-app_annotations:
+administration:
   # loads routes from the PHP annotations of the controllers found in that directory
-  resource: '../src/Controller/'
-  type:     annotation
+  resource: '../src/Controller/Administration/'
+  type: annotation
+  prefix: administration
+front:
+  # loads routes from the PHP annotations of the controllers found in that directory
+  resource: '../src/Controller/Front/'
+  type: annotation
+  prefix: front
+common:
+  # loads routes from the PHP annotations of the controllers found in that directory
+  resource: '../src/Controller/Common/'
+  type: annotation
