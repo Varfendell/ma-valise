@@ -74,7 +74,7 @@ class WelcomeController extends AbstractController
 	}
 
 	/**
-	 * @Route("/accueil")
+	 * @Route("/")
 	 *
 	 * @return RedirectResponse
 	 */
