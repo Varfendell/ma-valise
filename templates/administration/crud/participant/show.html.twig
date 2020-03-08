@@ -1,0 +1,60 @@
+{% extends 'Administration/default.html.twig' %}
+
+{% block title %}Participant{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-edit"></i>
+                        Participant {{ participant.lastName }} {{ participant.firstName }} au projet
+                        <a href="{{ path('project_show', {'id': participant.project.id}) }}" class="badge badge-primary">
+                            {{ participant.project.name }}
+                        </a>
+                        de
+                        <a href="{{ path('project_show', {'id': participant.project.user.id}) }}" class="badge badge-primary">
+                            {{ participant.project.user.firstNameLastName }}
+                        </a>
+
+                    </h3>
+                    <div class="card-tools">
+                        <ul class="nav nav-pills ml-auto">
+                            <li class="nav-item">
+                                <a class="btn bg-gradient-pink float-right" href="{{ path('participant_index') }}">back to
+                                    list</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-info float-right"
+                                   href="{{ path('participant_edit', {'id': participant.id}) }}">edit</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body pad">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ participant.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prénom</th>
+                            <td>{{ participant.firstName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ participant.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><a href="mailto:{{ participant.email }}" class="badge badge-info">{{ participant.email }}></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

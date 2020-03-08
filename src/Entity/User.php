@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User extends AbstractEntity implements UserInterface
 {
     /**
      * @var int
@@ -50,13 +53,6 @@ class User
     private $phone;
 
     /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="birthdate", type="date", nullable=true)
-     */
-    private $birthdate;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=100, nullable=false)
@@ -78,11 +74,17 @@ class User
     private $city;
 
     /**
-     * @var string|null
+     * @var Collection
      *
-     * @ORM\Column(name="picture", type="blob", length=65535, nullable=true)
+     * @ORM\OneToMany(targetEntity="Project", mappedBy="user")
      */
-    private $picture;
+    private $projects;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->projects = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,18 +139,6 @@ class User
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeInterface
-    {
-        return $this->birthdate;
-    }
-
-    public function setBirthdate(?\DateTimeInterface $birthdate): self
-    {
-        $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
     public function getPassword(): ?string
     {
         return $this->password;
@@ -185,17 +175,79 @@ class User
         return $this;
     }
 
-    public function getPicture()
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return ['ROLE_USER'];
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return string[] The user roles
+     */
+    public function getRoles()
     {
-        return $this->picture;
+        // TODO: Implement getRoles() method.
     }
 
-    public function setPicture($picture): self
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
     {
-        $this->picture = $picture;
+        return $this->getEmail();
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function getFirstNameLastName(){
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->setUser($this);
+        }
 
         return $this;
     }
 
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->contains($project)) {
+            $this->projects->removeElement($project);
+            // set the owning side to null (unless already changed)
+            if ($project->getUser() === $this) {
+                $project->setUser(null);
+            }
+        }
 
+        return $this;
+    }
 }

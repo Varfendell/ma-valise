@@ -1,0 +1,11 @@
+{% extends 'Administration/default.html.twig' %}
+
+{% block title %}New Participant{% endblock %}
+
+{% block content %}
+    <h1>Create new Participant</h1>
+
+    {{ include('administration/crud/participant/_form.html.twig') }}
+
+    <a href="{{ path('participant_index') }}">back to list</a>
+{% endblock %}

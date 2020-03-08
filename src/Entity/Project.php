@@ -2,6 +2,10 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="project", indexes={@ORM\Index(name="project_fk", columns={"cagnotte"}), @ORM\Index(name="projet_fk", columns={"user"})})
  * @ORM\Entity
  */
-class Project
+class Project extends AbstractEntity
 {
     /**
      * @var int
@@ -29,14 +33,14 @@ class Project
     private $name;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      *
      * @ORM\Column(name="date_start", type="date", nullable=true)
      */
     private $dateStart;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      *
      * @ORM\Column(name="date_end", type="date", nullable=true)
      */
@@ -50,24 +54,33 @@ class Project
     private $description;
 
     /**
-     * @var \Cagnotte
+     * @var Cagnotte
      *
-     * @ORM\ManyToOne(targetEntity="Cagnotte")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cagnotte", referencedColumnName="id")
-     * })
+     * @ORM\OneToOne(targetEntity="Cagnotte", inversedBy="project")
+     * @ORM\JoinColumn(name="cagnotte", referencedColumnName="id")
      */
     private $cagnotte;
 
     /**
-     * @var \User
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="projects")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
     private $user;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Participant", mappedBy="project")
+     */
+    private $participants;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,24 +99,24 @@ class Project
         return $this;
     }
 
-    public function getDateStart(): ?\DateTimeInterface
+    public function getDateStart(): ?DateTimeInterface
     {
         return $this->dateStart;
     }
 
-    public function setDateStart(?\DateTimeInterface $dateStart): self
+    public function setDateStart(?DateTimeInterface $dateStart): self
     {
         $this->dateStart = $dateStart;
 
         return $this;
     }
 
-    public function getDateEnd(): ?\DateTimeInterface
+    public function getDateEnd(): ?DateTimeInterface
     {
         return $this->dateEnd;
     }
 
-    public function setDateEnd(?\DateTimeInterface $dateEnd): self
+    public function setDateEnd(?DateTimeInterface $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
 
@@ -146,5 +159,34 @@ class Project
         return $this;
     }
 
+    /**
+     * @return Collection<Participant>
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
 
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->contains($participant)) {
+            $this->participants->removeElement($participant);
+            // set the owning side to null (unless already changed)
+            if ($participant->getProject() === $this) {
+                $participant->setProject(null);
+            }
+        }
+
+        return $this;
+    }
 }

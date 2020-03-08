@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="participant", indexes={@ORM\Index(name="participant_fk", columns={"project"})})
  * @ORM\Entity
  */
-class Participant
+class Participant extends AbstractEntity
 {
     /**
      * @var int
@@ -31,9 +31,9 @@ class Participant
     /**
      * @var string
      *
-     * @ORM\Column(name="last_nale", type="string", length=100, nullable=false)
+     * @ORM\Column(name="last_name", type="string", length=100, nullable=false)
      */
-    private $lastNale;
+    private $lastName;
 
     /**
      * @var string|null
@@ -43,12 +43,10 @@ class Participant
     private $email;
 
     /**
-     * @var \Project
+     * @var Project
      *
-     * @ORM\ManyToOne(targetEntity="Project")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="project", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="participants")
+     * @ORM\JoinColumn(name="project", referencedColumnName="id")
      */
     private $project;
 
@@ -69,14 +67,14 @@ class Participant
         return $this;
     }
 
-    public function getLastNale(): ?string
+    public function getLastName(): ?string
     {
-        return $this->lastNale;
+        return $this->lastName;
     }
 
-    public function setLastNale(string $lastNale): self
+    public function setLastName(string $lastName): self
     {
-        $this->lastNale = $lastNale;
+        $this->lastName = $lastName;
 
         return $this;
     }

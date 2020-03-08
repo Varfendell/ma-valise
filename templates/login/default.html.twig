@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block contentDefault %}
+    <body class="register-page">
+    <div class="register-box register-page">
+        <div class="register-logo">
+            <p class="text-orange">Ma Valise</p>
+        </div>
+        <div class="card card">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    </body>
+{% endblock %}

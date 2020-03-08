@@ -1,0 +1,11 @@
+{% extends 'Administration/default.html.twig' %}
+
+{% block title %}New Project{% endblock %}
+
+{% block content %}
+    <h1>Create new Project</h1>
+
+    {{ include('administration/crud/project/_form.html.twig') }}
+
+    <a href="{{ path('project_index') }}">back to list</a>
+{% endblock %}

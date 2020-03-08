@@ -1,0 +1,63 @@
+{% extends 'login/default.html.twig' %}
+
+{% block title %}Créer son compte{% endblock %}
+
+{% block content %}
+    <div class="card-header">
+        <h3 class="text-center text-orange">Inscription</h3>
+    </div>
+    {{ form_start(form) }}
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fa fa-envelope"></span>
+                </div>
+            </div>
+            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+        </div>
+        {{ form_errors(form.email) }}
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fa fa-lock"></span>
+                </div>
+            </div>
+            {{ form_widget(form.password.first, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+        </div>
+        {{ form_errors(form.password.first) }}
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fa fa-lock"></span>
+                </div>
+            </div>
+            {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmez le mot de passe'}}) }}
+        </div>
+        {{ form_errors(form.password.second) }}
+        <div class="card-footer">
+            <div class="row bg-teal color-palette">
+                <button type="submit" class="btn btn-block"><span style="color: white">Créer</span></button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+        <a href="{{ path('app_common_welcome_login') }}"><p class="text-teal">J'ai déjà une valise ?</p></a>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function () {
+            $(".custom-file-input").on("change", function () {
+                let fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+            $('#create_account_birthdate').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+            });
+        });
+    </script>
+{% endblock %}

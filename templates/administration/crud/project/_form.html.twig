@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.user, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.cagnotte, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+</div>
+<button class="btn btn-default">Sauvegarder</button>
+{{ form_end(form) }}

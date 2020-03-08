@@ -1,0 +1,98 @@
+{% extends 'Administration/default.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-edit"></i>
+                        {{ user.firstNameLastName }}
+                    </h3>
+                    <div class="card-tools">
+                        <ul class="nav nav-pills ml-auto">
+                            <li class="nav-item">
+                                <a class="btn btn-info float-right"
+                                   href="{{ path('user_edit', {'id': user.id}) }}">Editer l'utilisateur</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-success float-right" href="{{ path('user_index') }}">Retour aux
+                                    utilisateurs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body pad">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ user.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prénom</th>
+                            <td>{{ user.firstName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ user.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{ user.phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td>{{ user.city }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    {{ include('administration/crud/user/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-edit"></i>
+                            Projets de l'utilisateur
+                        </h3>
+                    </div>
+                    <div class="card-body pad">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Projet</th>
+                                <th>Cagnotte</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for project in user.projects %}
+                                <tr>
+                                    <td><a href="{{ path('project_show', {'id': project.id}) }}">{{ project.name }}</a>
+                                    </td>
+                                    <td>
+                                        {% if project.cagnotte is null %}
+                                            <a href="{{ path('cagnotte_new') }}" class="bg-gradient-pink">Créer une cagnotte</a>
+                                        {% else %}
+                                        <a target="_blank" href="{{ project.cagnotte.url }}">Acceder à la cagnotte du projet</a>
+                                            {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
+use Doctrine\ORM\EntityRepository;
+
 /**
  * Class UserRepository
  * @package App\Repository
  */
-class UserRepository
+class UserRepository extends EntityRepository
 {
 
 }
