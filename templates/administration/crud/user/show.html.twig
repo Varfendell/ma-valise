@@ -83,8 +83,8 @@
                                         {% if project.cagnotte is null %}
                                             <a href="{{ path('cagnotte_new') }}" class="bg-gradient-pink">Créer une cagnotte</a>
                                         {% else %}
-                                        <a target="_blank" href="{{ project.cagnotte.url }}">Acceder à la cagnotte du projet</a>
-                                            {% endif %}
+                                            <a target="_blank" href="{{ project.cagnotte.url }}">Acceder à la cagnotte du projet</a>
+                                        {% endif %}
                                     </td>
                                 </tr>
                             {% endfor %}

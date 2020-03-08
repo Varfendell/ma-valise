@@ -10,17 +10,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CagnotteType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('url', UrlType::class)
-        ;
-    }
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
+		$builder->add('url', UrlType::class);
+	}
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => Cagnotte::class,
-        ]);
-    }
+	public function configureOptions(OptionsResolver $resolver)
+	{
+		$resolver->setDefaults(['data_class' => Cagnotte::class,]);
+	}
 }

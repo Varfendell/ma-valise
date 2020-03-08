@@ -20,6 +20,24 @@
         <div class="input-group mb-3">
             <div class="input-group-append">
                 <div class="input-group-text">
+                    <span class="fa fa-envelope"></span>
+                </div>
+            </div>
+            {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+        </div>
+        {{ form_errors(form.firstName) }}
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fa fa-envelope"></span>
+                </div>
+            </div>
+            {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+        </div>
+        {{ form_errors(form.lastName) }}
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <div class="input-group-text">
                     <span class="fa fa-lock"></span>
                 </div>
             </div>
@@ -41,7 +59,7 @@
             </div>
         </div>
         {{ form_end(form) }}
-        <a href="{{ path('app_common_welcome_login') }}"><p class="text-teal">J'ai déjà une valise ?</p></a>
+        <a href="{{ path('login') }}"><p class="text-teal">J'ai déjà une valise ?</p></a>
     </div>
 {% endblock %}
 
