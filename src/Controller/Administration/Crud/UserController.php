@@ -94,7 +94,7 @@ class UserController extends DefaultController
 	}
 
 	/**
-	 * @Route("/{id}/change-password", name="user_change_password", methods={"DELETE"}, defaults={"id"=11})
+	 * @Route("/{id}/change-password", name="user_change_password", methods={"DELETE"})
      * @param Request $request
      * @param User $user
 	 * @return Response
