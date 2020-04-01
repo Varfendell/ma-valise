@@ -16,4 +16,6 @@
 </div>
 <button class="btn btn-default">Sauvegarder</button>
 {{ form_end(form) }}
+{% if user.id is not null %}
 <a href="{{ path('user_change_password', {'id': user.id}) }}" class="bg-gradient-blue">Changer le mot de passe</a>
+{% endif %}
