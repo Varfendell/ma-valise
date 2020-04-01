@@ -95,11 +95,9 @@ class UserController extends DefaultController
 
 	/**
 	 * @Route("/{id}/change-password", name="user_change_password", methods={"DELETE"})
-	 * @param Request $request
-	 * @param User $user
 	 * @return Response
 	 */
-	public function changePassword(Request $request, User $user): Response
+	public function changePassword(): Response
 	{
 		return $this->json(['Work in progress']);
 	}
