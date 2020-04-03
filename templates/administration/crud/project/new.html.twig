@@ -3,9 +3,9 @@
 {% block title %}New Project{% endblock %}
 
 {% block content %}
-    <h1>Quelle est ton idée de projet?</h1>
+    <h1>Mon nouveau projet</h1>
 
     {{ include('administration/crud/project/_form.html.twig') }}
 
-    <a href="{{ path('project_index') }}">back to list</a>
+    <a href="{{ path('project_index') }}">Revenir à mes projets</a>
 {% endblock %}
