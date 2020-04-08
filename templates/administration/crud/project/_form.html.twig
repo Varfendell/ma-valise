@@ -18,7 +18,7 @@
     {{ form_row(form.dateEnd, {'attr': {'class': 'form-control'}}) }}
 </div>
 <div class="form-group container mt-5 mb-5" style="width: 400px">
-    {{ form_row(form.dateRange, {'attr': {'class': 'form-control', 'id': 'picker'}}) }}
+    <label for="picker">De quand à quand?</label><input type="text" id="picker" class="form-control">
 </div>
 <script>$('#picker').daterangepicker({
         autoApply: true,
