@@ -46,13 +46,6 @@ class Project extends AbstractEntity
 	 */
 	private $dateEnd;
 
-    /**
-     * @var DateTime|null
-     *
-     * @ORM\Column(name="date_range", type="date", nullable=true)
-     */
-    private $dateRange;
-
 	/**
 	 * @var string|null
 	 *
@@ -129,18 +122,6 @@ class Project extends AbstractEntity
 
 		return $this;
 	}
-
-    public function getDateRange(): ?DateTimeInterface
-    {
-        return $this->dateRange;
-    }
-
-    public function setDateRange(?DateTimeInterface $dateRange): self
-    {
-        $this->dateRange = $dateRange;
-
-        return $this;
-    }
 
 	public function getDescription(): ?string
 	{
