@@ -26,7 +26,7 @@ class ProjectType extends AbstractType
 			return $label;
 		},])->add('user', EntityType::class, ['class' => User::class, 'choice_label' => function (User $user) {
 			return $user->getFirstNameLastName();
-		},]);
+		},],);
 	}
 
 	public function configureOptions(OptionsResolver $resolver)
