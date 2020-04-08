@@ -37,8 +37,8 @@
                             <tr>
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
-                                <td>{{ project.dateStart ? project.dateStart|date('Y-m-d') : '' }}</td>
-                                <td>{{ project.dateEnd ? project.dateEnd|date('Y-m-d') : '' }}</td>
+                                <td>{{ project.dateStart ? project.dateStart|date('d-m-Y') : '' }}</td>
+                                <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y') : '' }}</td>
                                 <td>{{ project.description }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
