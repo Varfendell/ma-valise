@@ -22,8 +22,10 @@
 </div>
 <script>$('#picker').daterangepicker({
         autoApply: true,
-        startDate: '08/04/2020',
-        endDate: '09/04/2020',
+        singleDatePicker: true,
+        locale: {
+            format: 'DD-MM-YYYY'
+        }
     });
 </script>
 <button class="btn btn-default">Sauvegarder</button>
