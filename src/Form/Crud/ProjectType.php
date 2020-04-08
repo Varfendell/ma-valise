@@ -16,7 +16,7 @@ class ProjectType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('name', TextType::class, ['label' => 'Quel est le nom de ton projet?'])->add('dateStart', DateType::class, ['label' => 'Quand souhaites-tu partir?'])->add('dateEnd', DateType::class, ['label' => 'Quand souhaites-tu revenir?'])->add('description')->add('cagnotte', EntityType::class, ['class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
+		$builder->add('name', TextType::class, ['label' => 'Quel est le nom de ton projet?'])->add('dateStart', DateType::class, ['label' => 'Quand souhaites-tu partir?'])->add('dateEnd', DateType::class, ['label' => 'Quand souhaites-tu revenir?'])->add('description', TextType::class, ['label' => 'Quelle est ton idée de projet?'])->add('cagnotte', EntityType::class, ['label' => 'Avec quelle cagnotte?', 'class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
 			if (!empty($cagnotte->getProject())) {
 				$label = 'Cagnotte ' . $cagnotte->getId() . ' du projet ' . $cagnotte->getProject()->getName();
 			}
@@ -24,7 +24,7 @@ class ProjectType extends AbstractType
 				$label = 'Cagnotte ' . $cagnotte->getId() . ' sans projet ';
 			}
 			return $label;
-		},])->add('user', EntityType::class, ['class' => User::class, 'choice_label' => function (User $user) {
+		},])->add('user', EntityType::class, ['label' => 'Utilisateur', 'class' => User::class, 'choice_label' => function (User $user) {
 			return $user->getFirstNameLastName();
 		},],);
 	}
