@@ -5,6 +5,7 @@ namespace App\Form\Crud;
 use App\Entity\Cagnotte;
 use App\Entity\Project;
 use App\Entity\User;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,7 +16,7 @@ class ProjectType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('name', TextType::class, ['label' => 'Quel est le nom de ton projet?'])->add('dateStart',TextType::class, ['label' => 'Quand souhaites-tu partir?'])->add('dateEnd')->add('description')->add('cagnotte', EntityType::class, ['class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
+		$builder->add('name', TextType::class, ['label' => 'Quel est le nom de ton projet?'])->add('dateStart',DateType::class, ['label' => 'Quand souhaites-tu partir?'])->add('dateEnd')->add('description')->add('cagnotte', EntityType::class, ['class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
 			if (!empty($cagnotte->getProject())) {
 				$label = 'Cagnotte ' . $cagnotte->getId() . ' du projet ' . $cagnotte->getProject()->getName();
 			}
