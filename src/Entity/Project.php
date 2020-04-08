@@ -46,6 +46,13 @@ class Project extends AbstractEntity
 	 */
 	private $dateEnd;
 
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="date_picker", type="date", nullable=true)
+     */
+    private $datePicker;
+
 	/**
 	 * @var string|null
 	 *
@@ -110,6 +117,18 @@ class Project extends AbstractEntity
 
 		return $this;
 	}
+
+    public function getDatePicker(): ?DateTimeInterface
+    {
+        return $this->datePicker;
+    }
+
+    public function setDatePicker(?DateTimeInterface $datePicker): self
+    {
+        $this->datePicker = $datePicker;
+
+        return $this;
+    }
 
 	public function getDateEnd(): ?DateTimeInterface
 	{
