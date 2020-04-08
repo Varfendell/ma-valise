@@ -26,6 +26,7 @@
                         <tr>
                             <th>N°</th>
                             <th>Nom</th>
+                            <th>DateRange</th>
                             <th>Date de début</th>
                             <th>Date de fin</th>
                             <th>Description</th>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
+                                <td>{{ project.dateRange ? project.dateRange|date('d-m-Y') : '' }}</td>
                                 <td>{{ project.dateStart ? project.dateStart|date('Y-m-d') : '' }}</td>
                                 <td>{{ project.dateEnd ? project.dateEnd|date('Y-m-d') : '' }}</td>
                                 <td>{{ project.description }}</td>
