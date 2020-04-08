@@ -17,5 +17,14 @@
 <div class="form-group">
     {{ form_row(form.dateEnd, {'attr': {'class': 'form-control'}}) }}
 </div>
+<div class="container mt-5 mb-5" style="width: 400px">
+    <label for="picker">DateRange</label><input type="text" id="picker" class="form-control">
+</div>
+<script>$('#picker').daterangepicker({
+        autoApply: true,
+        startDate: '08/04/2020',
+        endDate: '09/04/2020',
+    });
+</script>
 <button class="btn btn-default">Sauvegarder</button>
 {{ form_end(form) }}
