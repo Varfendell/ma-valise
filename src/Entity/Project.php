@@ -7,6 +7,7 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * Project
@@ -46,6 +47,13 @@ class Project extends AbstractEntity
 	 */
 	private $dateEnd;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="desires", type="boolean", nullable=false)
+     */
+    private $desires;
+
 	/**
 	 * @var string|null
 	 *
@@ -60,6 +68,8 @@ class Project extends AbstractEntity
 	 * @ORM\JoinColumn(name="cagnotte", referencedColumnName="id")
 	 */
 	private $cagnotte;
+
+
 
 	/**
 	 * @var User
@@ -124,16 +134,28 @@ class Project extends AbstractEntity
 	}
 
 	public function getDescription(): ?string
-	{
-		return $this->description;
-	}
+{
+    return $this->description;
+}
 
-	public function setDescription(?string $description): self
-	{
-		$this->description = $description;
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
-		return $this;
-	}
+        return $this;
+    }
+
+    public function getDesires(): Boolean
+    {
+        return $this->desires;
+    }
+
+    public function setDesires(?boolean $desires): self
+    {
+        $this->desires = $desires;
+
+        return $this;
+    }
 
 	public function getCagnotte(): ?Cagnotte
 	{
