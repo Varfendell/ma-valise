@@ -47,6 +47,31 @@ class Project extends AbstractEntity
 	 */
 	private $dateEnd;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="desires", type="boolean", nullable=false)
+     */
+    private $desires;
+
+    /**
+     * @return Boolean
+     */
+    public function getDesires(): Boolean
+    {
+        return $this->desires;
+    }
+
+    /**
+     * @param Boolean $desires
+     * @return Project
+     */
+    public function setDesires(Boolean $desires): Project
+    {
+        $this->desires = $desires;
+        return $this;
+    }
+
 	/**
 	 * @var string|null
 	 *
