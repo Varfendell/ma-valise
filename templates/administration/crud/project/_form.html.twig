@@ -1,26 +1,26 @@
 {{ form_start(form) }}
-<div class="form-group">
+<div class="container">
+<div class="form-group row">
     {{ form_row(form.user, {'attr': {'class': 'form-control'}}) }}
 </div>
-<div class="form-group">
+<div class="form-group row">
     {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
 </div>
-<div class="form-group">
+<div class="form-group row">
     {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
 </div>
-<div class="form-group">
+<div class="form-group row">
     {{ form_row(form.desires, {'attr': {'class': 'form-check'}}) }}
 </div>
-<div class="form-inline">
-<div class="form-group">
+<div class="form-group row">
     {{ form_row(form.dateStart, {'attr': {'class': 'form-control'}}) }}
 </div>
-<div class="form-group">
+<div class="form-group row">
     {{ form_row(form.dateEnd, {'attr': {'class': 'form-control'}}) }}
 </div>
-</div>
-<div class="form-group">
+<div class="form-group row">
     {{ form_row(form.cagnotte, {'attr': {'class': 'form-control'}}) }}
 </div>
 <button class="btn btn-default">Sauvegarder</button>
+</div>
 {{ form_end(form) }}
