@@ -52,6 +52,24 @@ class Project extends AbstractEntity
     private $desires;
 
     /**
+     * @return mixed
+     */
+    public function getDesires()
+    {
+        return $this->desires;
+    }
+
+    /**
+     * @param mixed $desires
+     * @return Project
+     */
+    public function setDesires($desires)
+    {
+        $this->desires = $desires;
+        return $this;
+    }
+
+    /**
      * @ORM\Column(name="who", type="array", nullable=false)
      */
     private $who;
@@ -71,24 +89,6 @@ class Project extends AbstractEntity
     public function setWho($who)
     {
         $this->who = $who;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDesires()
-    {
-        return $this->desires;
-    }
-
-    /**
-     * @param mixed $desires
-     * @return Project
-     */
-    public function setDesires($desires)
-    {
-        $this->desires = $desires;
         return $this;
     }
 
