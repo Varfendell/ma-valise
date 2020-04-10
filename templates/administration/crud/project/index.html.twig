@@ -38,9 +38,6 @@
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
                                 <td>{{ project.description }}</td>
-                                {% for desires in project.desires %}
-                                    <td>{{ desires['#Aventure'] }} {{ desires['#Rando'] }} {{ desires['#Bien-être'] }} {{ desires['#Noces'] }} {{ desires['#Plage'] }} {{ desires['#Montagne'] }} {{ desires['#Soleil'] }}</td>
-                                {% endfor %}
                                 <td>{{ project.dateStart ? project.dateStart|date('d-m-Y') : '' }}</td>
                                 <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y') : '' }}</td>
                                 <td>
