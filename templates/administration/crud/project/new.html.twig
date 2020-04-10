@@ -3,8 +3,11 @@
 {% block title %}New Project{% endblock %}
 
 {% block content %}
-    <h1>Mon nouveau projet</h1>
-
+    <div class="container">
+        <div class="col-sm-12">
+            <h1>Mon nouveau projet</h1>
+        </div>
+    </div>
     {{ include('administration/crud/project/_form.html.twig') }}
 
     <a href="{{ path('project_index') }}">Revenir à mes projets</a>
