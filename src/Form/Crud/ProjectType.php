@@ -17,7 +17,7 @@ class ProjectType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('name', TextType::class, ['label' => 'Quel est le nom de ton projet?'])->add('desires', ChoiceType::class, ['label' => 'Quelles sont tes envies?', 'required' => false, 'choices' => [
+		$builder->add('name', TextType::class, ['label' => 'Quel est le nom de ton projet?'])->add('desires', ChoiceType::class, ['required' => false, 'choices' => [
 		    '#Aventure' => false,
             '#Rando' => false,
             '#Bien-être' => false,
