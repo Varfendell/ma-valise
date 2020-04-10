@@ -3,7 +3,7 @@
 <div class="container">
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.user, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.user, {'label':'Utilisateur'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
@@ -13,27 +13,27 @@
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.description, {'label':'Quelle est ton idée de projet?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.desires, {'label':'Quelles sont vos envies?'}, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.desires, {'label':'Quelles sont tes envies?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.dateStart, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.dateEnd, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.dateEnd, {'label':'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.cagnotte, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.cagnotte, {'label':'Avec quelle cagnotte?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <button class="btn btn-default">Sauvegarder</button>
