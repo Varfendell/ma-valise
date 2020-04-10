@@ -39,7 +39,7 @@
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
                                 <td>{{ project.description }}</td>
-                                <td>{% for desires in projects %}
+                                <td>{% for desires in project %}
                                         {{ desires }}
                                     {% endfor %}</td>
                                 <td>{{ project.dateStart ? project.dateStart|date('d-m-Y') : '' }}</td>
