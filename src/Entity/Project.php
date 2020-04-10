@@ -7,7 +7,6 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * Project
@@ -48,25 +47,23 @@ class Project extends AbstractEntity
 	private $dateEnd;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="desires", type="boolean", nullable=false)
+     * @ORM\Column(name="desires", type="array", nullable=false)
      */
     private $desires;
 
     /**
-     * @return Boolean
+     * @return mixed
      */
-    public function getDesires(): Boolean
+    public function getDesires()
     {
         return $this->desires;
     }
 
     /**
-     * @param Boolean $desires
+     * @param mixed $desires
      * @return Project
      */
-    public function setDesires(Boolean $desires): Project
+    public function setDesires($desires)
     {
         $this->desires = $desires;
         return $this;
