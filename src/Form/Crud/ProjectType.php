@@ -33,7 +33,7 @@ class ProjectType extends AbstractType
             '#Eco-Responsable' => false],
             'expanded' => true,
             'multiple' => true])->add('dateStart', DateType::class)->add('dateEnd', DateType::class)->add('who', ChoiceType::class, ['required' => true, 'choices' => [
-                'Seul' => false,
+                'Seul(e)' => false,
             'En couple' => false,
             'En famille' => false,
             'Entre amis' => false],
