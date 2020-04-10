@@ -30,9 +30,15 @@ class ProjectType extends AbstractType
             '#Luxe' => false,
             '#Road-Trip' => false,
             '#Sportif' => false,
-            '#Eco-Responsable' => false,],
+            '#Eco-Responsable' => false],
             'expanded' => true,
-            'multiple' => true])->add('dateStart', DateType::class)->add('dateEnd', DateType::class)->add('description', TextType::class)->add('cagnotte', EntityType::class, ['class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
+            'multiple' => true])->add('dateStart', DateType::class)->add('dateEnd', DateType::class)->add('who', ChoiceType::class, ['required' => true, 'choices' => [
+                'Seul' => false,
+            'En couple' => false,
+            'En famille' => false,
+            'Entre amis' => false],
+            'expanded' => true,
+            'multiple' =>false])->add('description', TextType::class)->add('cagnotte', EntityType::class, ['class' => Cagnotte::class, 'choice_label' => function (Cagnotte $cagnotte) {
 			if (!empty($cagnotte->getProject())) {
 				$label = 'Cagnotte ' . $cagnotte->getId() . ' du projet ' . $cagnotte->getProject()->getName();
 			}
