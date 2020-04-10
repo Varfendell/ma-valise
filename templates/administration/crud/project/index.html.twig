@@ -27,7 +27,6 @@
                             <th>N°</th>
                             <th>Nom</th>
                             <th>Description</th>
-                            <th>Envies</th>
                             <th>Date de début</th>
                             <th>Date de fin</th>
                             <th>actions</th>
@@ -39,7 +38,6 @@
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
                                 <td>{{ project.description }}</td>
-                                <td>{{ project.desires ? project.desires|array}}</td>
                                 <td>{{ project.dateStart ? project.dateStart|date('d-m-Y') : '' }}</td>
                                 <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y') : '' }}</td>
                                 <td>
