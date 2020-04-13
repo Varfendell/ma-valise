@@ -26,6 +26,9 @@
             {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
                 $('.js-daterangepicker').daterangepicker({
+                    autoApply:true,
+                    startDate: '2020/04/13',
+                    endDate: '2020/04/14',
                     locale: {
                         format: 'YYYY-MM-DD'
                     }
@@ -39,8 +42,9 @@
             {{ form_row(form.dateEnd, {'label':'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
                 $('.js-daterangepicker').daterangepicker({
-                    startDate: '2020/04/13',
-                    endDate: '2020/04/14',
+                    autoApply:true,
+                    startDate: '2020/05/13',
+                    endDate: '2020/05/14',
                     locale: {
                         format: 'YYYY-MM-DD'
                     }
