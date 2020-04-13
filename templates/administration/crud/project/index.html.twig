@@ -28,9 +28,9 @@
                             <th>Nom</th>
                             <th>Description</th>
                             <th>Envies</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>actions</th>
+                            <th>Date de départ souhaitée</th>
+                            <th>Date de retour souhaitée</th>
+                            <th>Voir/Editer le projet</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,8 +42,8 @@
                                 <td>{% for desires in project %}
                                         {{ desires }}
                                     {% endfor %}</td>
-                                <td>{{ project.dateStart ? project.dateStart|date('d-m-Y') : '' }}</td>
-                                <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y') : '' }}</td>
+                                <td>{{ project.dateStart ? project.dateStart|date('d-m-Y - d-m-Y'): ''}}</td>
+                                <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y - d-m-Y'): ''}}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ path('project_show', {'id': project.id}) }}" class="btn bg-gradient-orange"><i class="fas fa-eye"></i></a>

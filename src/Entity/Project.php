@@ -32,19 +32,19 @@ class Project extends AbstractEntity
 	 */
 	private $name;
 
-	/**
-	 * @var DateTime|null
-	 *
-	 * @ORM\Column(name="date_start", type="date", nullable=true)
-	 */
-	private $dateStart;
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="date_start", type="date", nullable=true)
+     */
+    private $dateStart;
 
-	/**
-	 * @var DateTime|null
-	 *
-	 * @ORM\Column(name="date_end", type="date", nullable=true)
-	 */
-	private $dateEnd;
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="date_end", type="date", nullable=true)
+     */
+    private $dateEnd;
 
     /**
      * @ORM\Column(name="desires", type="array", nullable=false)
@@ -52,45 +52,9 @@ class Project extends AbstractEntity
     private $desires;
 
     /**
-     * @return mixed
-     */
-    public function getDesires()
-    {
-        return $this->desires;
-    }
-
-    /**
-     * @param mixed $desires
-     * @return Project
-     */
-    public function setDesires($desires)
-    {
-        $this->desires = $desires;
-        return $this;
-    }
-
-    /**
      * @ORM\Column(name="who", type="array", nullable=false)
      */
     private $who;
-
-    /**
-     * @return mixed
-     */
-    public function getWho()
-    {
-        return $this->who;
-    }
-
-    /**
-     * @param mixed $who
-     * @return Project
-     */
-    public function setWho($who)
-    {
-        $this->who = $who;
-        return $this;
-    }
 
 	/**
 	 * @var string|null
@@ -168,6 +132,28 @@ class Project extends AbstractEntity
 
 		return $this;
 	}
+
+    public function getDesires()
+    {
+        return $this->desires;
+    }
+
+    public function setDesires($desires)
+    {
+        $this->desires = $desires;
+        return $this;
+    }
+
+    public function getWho()
+    {
+        return $this->who;
+    }
+
+    public function setWho($who)
+    {
+        $this->who = $who;
+        return $this;
+    }
 
 	public function getDescription(): ?string
 {

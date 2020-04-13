@@ -3,17 +3,17 @@
 <div class="container">
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.user, {'label':'Utilisateur'}, {'attr': {'class': ''}}) }}
+            {{ form_row(form.user, {'label':'Utilisateur'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.name, {'label':'Quel est le nom de ton projet?'}, {'attr': {'class': ''}}) }}
+            {{ form_row(form.name, {'label':'Quel est le nom de ton projet?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.description, {'label':'Quelle est ton idée de projet?'}, {'attr': {'class': ''}}) }}
+            {{ form_row(form.description, {'label':'Quelle est ton idée de projet?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
@@ -21,24 +21,56 @@
             {{ form_row(form.desires, {'label':'Quelles sont tes envies?'}, {'attr': {'class': 'form-check'}}) }}
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group container mt-5 mb-5" style="width: 400px">
         <div class="col-sm-12">
-            {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': ''}}) }}
+            {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}) }}
+            <script>
+                $('.js-daterangepicker').daterangepicker({
+                    autoApply:true,
+                    startDate: '2020/04/13',
+                    endDate: '2020/04/14',
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+
+                });
+            </script>
+        </div>
+    </div>
+    <div class="form-group container mt-5 mb-5" style="width: 400px">
+        <div class="col-sm-12">
+            {{ form_row(form.dateEnd, {'label':'Quand souhaites-tu revenir?'}) }}
+            <script>
+                $('.js-daterangepicker').daterangepicker({
+                    autoApply:true,
+                    startDate: '2020/05/13',
+                    endDate: '2020/05/14',
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+
+                });
+            </script>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.dateEnd, {'label':'Quand souhaites-tu revenir?'}, {'attr': {'class': ''}}) }}
+            {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.who, {'label':'Avec qui?'}, {'attr': {'class': ''}}) }}
+            {{ form_row(form.dateEnd, {'label':'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.cagnotte, {'label':'Avec quelle cagnotte?'}, {'attr': {'class': ''}}) }}
+            {{ form_row(form.who, {'label':'Avec qui?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12">
+            {{ form_row(form.cagnotte, {'label':'Avec quelle cagnotte?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <button class="btn btn-default">Sauvegarder</button>
