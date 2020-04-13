@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -109,29 +108,27 @@ class Project extends AbstractEntity
 		return $this;
 	}
 
-	public function getDateStart(): ?DateTimeInterface
-	{
-		return $this->dateStart;
-	}
+    public function getDateStart(): ?DateTime
+    {
+        return $this->dateStart;
+    }
 
-	public function setDateStart(?DateTimeInterface $dateStart): self
-	{
-		$this->dateStart = $dateStart;
+    public function setDateStart(?DateTime $dateStart): Project
+    {
+        $this->dateStart = $dateStart;
+        return $this;
+    }
 
-		return $this;
-	}
+    public function getDateEnd(): ?DateTime
+    {
+        return $this->dateEnd;
+    }
 
-	public function getDateEnd(): ?DateTimeInterface
-	{
-		return $this->dateEnd;
-	}
-
-	public function setDateEnd(?DateTimeInterface $dateEnd): self
-	{
-		$this->dateEnd = $dateEnd;
-
-		return $this;
-	}
+    public function setDateEnd(?DateTime $dateEnd): Project
+    {
+        $this->dateEnd = $dateEnd;
+        return $this;
+    }
 
     public function getDesires()
     {
