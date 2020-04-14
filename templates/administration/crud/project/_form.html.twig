@@ -18,10 +18,10 @@
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.desires, {'label':'Quelles sont tes envies?'}, {'attr': {'class': 'form-check'}}) }}
+            <strong>{{ form_row(form.desires, {'label':'Quelles sont tes envies?'}, {'attr': {'class': 'form-check'}}) }}</strong>
         </div>
     </div>
-    <div class="form-group container mt-5 mb-5" style="width: 400px">
+    <div class="form-group" style="width: 400px">
         <div class="col-sm-12">
             {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
@@ -37,7 +37,7 @@
             </script>
         </div>
     </div>
-    <div class="form-group container mt-5 mb-5" style="width: 400px">
+    <div class="form-group" style="width: 400px">
         <div class="col-sm-12">
             {{ form_row(form.dateEnd, {'label':'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
@@ -55,7 +55,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            {{ form_row(form.who, {'label':'Avec qui?'}, {'attr': {'class': 'form-control'}}) }}
+            <strong>{{ form_row(form.who, {'label': 'Avec qui?'}, {'attr': {'class': 'form-control'}}) }}</strong>
         </div>
     </div>
     <div class="form-group">
