@@ -30,6 +30,7 @@
                             <th>Envies</th>
                             <th>Date de départ souhaitée</th>
                             <th>Date de retour souhaitée</th>
+                            <th>Avec qui?</th>
                             <th>Voir/Editer le projet</th>
                         </tr>
                         </thead>
@@ -44,6 +45,7 @@
                                     {% endfor %}</td>
                                 <td>{{ project.dateStart ? project.dateStart|date('d-m-Y - d-m-Y'):''}}</td>
                                 <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y - d-m-Y'): ''}}</td>
+                                <td>{{ project.who }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ path('project_show', {'id': project.id}) }}" class="btn bg-gradient-orange"><i class="fas fa-eye"></i></a>
@@ -53,7 +55,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="6">no records found</td>
+                                <td colspan="8">no records found</td>
                             </tr>
                         {% endfor %}
                         </tbody>
