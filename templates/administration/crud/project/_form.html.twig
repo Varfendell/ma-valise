@@ -26,10 +26,16 @@
             {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
                 $('.js-daterangepicker').daterangepicker({
-                    autoApply:true,
                     startDate: moment(),
-                    endDate: moment(),
+                    endDate: moment().add('days', 1),
+                    buttonClasses: ['btn btn-default bg-teal'],
+                    applyClass: 'btn-small btn-primary',
+                    cancelClass: 'btn-small',
                     locale: {
+                        applyLabel: 'Valider',
+                        cancelLabel: 'Annuler',
+                        daysOfWeek: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa','Di'],
+                        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
                         format: 'YYYY-MM-DD'
                     }
 
@@ -42,10 +48,16 @@
                 {{ form_row(form.dateEnd, {'label': 'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
                 $('.js-daterangepicker').daterangepicker({
-                    autoApply:true,
                     startDate: moment(),
-                    endDate: moment(),
+                    endDate: moment().add('days', 1),
+                    buttonClasses: ['btn btn-default bg-teal'],
+                    applyClass: 'btn-small btn-primary',
+                    cancelClass: 'btn-small',
                     locale: {
+                        applyLabel: 'Valider',
+                        cancelLabel: 'Annuler',
+                        daysOfWeek: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa','Di'],
+                        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
                         format: 'YYYY-MM-DD'
                     }
 
