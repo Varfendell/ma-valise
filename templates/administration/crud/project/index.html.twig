@@ -43,8 +43,8 @@
                                 <td>{% for desires in project %}
                                         {{ desires }}
                                     {% endfor %}</td>
-                                <td>{{ project.dateStart ? project.dateStart|date('d-m-Y - d-m-Y'):''}}</td>
-                                <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y - d-m-Y'): ''}}</td>
+                                <td>{{ project.dateStart ? project.dateStart|date('d-m-Y'):''}}</td>
+                                <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y'): ''}}</td>
                                 <td>{{ project.who }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">

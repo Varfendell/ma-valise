@@ -2,27 +2,27 @@
 {{ form_start(form) }}
 <div class="container">
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             {{ form_row(form.user, {'label':'Utilisateur'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             {{ form_row(form.name, {'label':'Quel est le nom de ton projet?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-6">
             {{ form_row(form.description, {'label':'Quelle est ton idée de projet?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <strong>{{ form_row(form.desires, {'label':'Quelles sont tes envies?'}, {'attr': {'class': 'form-check'}}) }}</strong>
         </div>
     </div>
-    <div class="form-group" style="width: 400px">
-        <div class="col-sm-12">
+    <div class="form-group">
+        <div class="col-sm-3">
             {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
                 $('.js-daterangepicker').daterangepicker({
@@ -37,9 +37,9 @@
             </script>
         </div>
     </div>
-    <div class="form-group" style="width: 400px">
-        <div class="col-sm-12">
-            {{ form_row(form.dateEnd, {'label':'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
+    <div class="form-group">
+        <div class="col-sm-3">
+                {{ form_row(form.dateEnd, {'label': 'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
                 $('.js-daterangepicker').daterangepicker({
                     autoApply:true,
@@ -54,12 +54,12 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <strong>{{ form_row(form.who, {'label': 'Avec qui?'}, {'attr': {'class': 'form-control'}}) }}</strong>
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             {{ form_row(form.cagnotte, {'label':'Avec quelle cagnotte?'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
