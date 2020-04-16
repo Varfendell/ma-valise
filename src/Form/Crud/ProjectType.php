@@ -5,6 +5,7 @@ namespace App\Form\Crud;
 use App\Entity\Cagnotte;
 use App\Entity\Project;
 use App\Entity\User;
+use App\Entity\Wish;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -18,7 +19,9 @@ class ProjectType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('name', TextType::class)->add('dateStart', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('dateEnd', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('desires', ChoiceType::class, ['required' => false, 'choices' => [
+		$builder->add('name', TextType::class)->add('wish', EntityType::class, ['mapped' => false, 'expanded' => false, 'multiple' =>true, 'class' => Wish::class, 'choice_label' => function(Wish $wish) {
+		    return $wish->getNature();
+        }])->add('dateStart', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('dateEnd', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('desires', ChoiceType::class, ['required' => false, 'choices' => [
 		    '#Aventure' => false,
             '#Rando' => false,
             '#Bien-être' => false,
