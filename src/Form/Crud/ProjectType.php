@@ -19,9 +19,7 @@ class ProjectType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('name', TextType::class)->add('wish', EntityType::class, ['mapped' => false, 'expanded' => false, 'multiple' =>true, 'class' => Wish::class, 'choice_label' => function(Wish $wish) {
-		    return $wish->getNature();
-        }])->add('dateStart', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('dateEnd', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('desires', ChoiceType::class, ['required' => false, 'choices' => [
+		$builder->add('name', TextType::class)->add('wish', EntityType::class, ['expanded' => false, 'multiple' =>true, 'class' => Wish::class, 'choice_label' => 'nature'])->add('dateStart', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('dateEnd', DateType::class, array('widget' => 'single_text', 'attr' => ['class' => 'js-daterangepicker'], 'html5' => false))->add('desires', ChoiceType::class, ['required' => false, 'choices' => [
 		    '#Aventure' => false,
             '#Rando' => false,
             '#Bien-être' => false,
