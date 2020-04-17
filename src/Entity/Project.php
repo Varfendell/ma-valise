@@ -30,7 +30,8 @@ class Project extends AbstractEntity
 	private $id;
 
     /**
-     * Many Users have Many Groups.
+     * Quelles sont tes envies?
+     * Many Projects have Many Wishes.
      * @ManyToMany(targetEntity="Wishes")
      * @JoinTable(name="projects_wishes",
      *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
@@ -61,6 +62,7 @@ class Project extends AbstractEntity
     private $dateEnd;
 
     /**
+     * Avec qui partir?
      * @ORM\Column(name="who", type="array", nullable=false)
      */
     private $who;
@@ -98,8 +100,8 @@ class Project extends AbstractEntity
 	public function __construct()
 	{
 		parent::__construct();
-		$this->participants = new ArrayCollection();
-        $this->wishes = new ArrayCollection();
+		    $this->participants = new ArrayCollection();
+            $this->wishes = new ArrayCollection();
 	}
 
     /**

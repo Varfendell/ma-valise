@@ -95,7 +95,6 @@ class User extends AbstractEntity implements UserInterface
    		parent::__construct();
    		$this->projects = new ArrayCollection();
    		$this->roles = json_encode([]);
-        $this->wish = new ArrayCollection();
    	}
 
 	public function getId(): ?int
