@@ -7,9 +7,7 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\JoinTable;
-use Doctrine\ORM\Mapping\ManyToMany;
+
 
 /**
  * Project
@@ -36,16 +34,6 @@ class Project extends AbstractEntity
 	private $name;
 
     /**
-     * Many Projects have Many Wishes.
-     * @ManyToMany(targetEntity="Wish")
-     * @JoinTable(name="project_wish",
-     *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="project_id", referencedColumnName="id")}
-     *      )
-     */
-    private $wish;
-
-    /**
      * @var DateTime|null
      *
      * @ORM\Column(name="date_start", type="date", nullable=true)
@@ -58,11 +46,6 @@ class Project extends AbstractEntity
      * @ORM\Column(name="date_end", type="date", nullable=true)
      */
     private $dateEnd;
-
-    /**
-     * @ORM\Column(name="desires", type="array", nullable=false)
-     */
-    private $desires;
 
     /**
      * @ORM\Column(name="who", type="array", nullable=false)
@@ -102,27 +85,8 @@ class Project extends AbstractEntity
 	public function __construct()
 	{
 		parent::__construct();
-        $this->wish = new ArrayCollection();
 		$this->participants = new ArrayCollection();
 	}
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getWish(): ArrayCollection
-    {
-        return $this->wish;
-    }
-
-    /**
-     * @param ArrayCollection $wish
-     * @return Project
-     */
-    public function setWish(ArrayCollection $wish): Project
-    {
-        $this->wish = $wish;
-        return $this;
-    }
 
 	public function getId(): ?int
 	{
@@ -162,17 +126,6 @@ class Project extends AbstractEntity
     {
         $this->dateEnd = $dateEnd;
 
-        return $this;
-    }
-
-    public function getDesires()
-    {
-        return $this->desires;
-    }
-
-    public function setDesires($desires)
-    {
-        $this->desires = $desires;
         return $this;
     }
 

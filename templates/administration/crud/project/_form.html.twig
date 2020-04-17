@@ -17,17 +17,26 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-3">
-            <strong>{{ form_row(form.desires, {'label':'Quelles sont tes envies?'}, {'attr': {'class': 'form-check'}}) }}</strong>
+        <div class="'col-sm-3">
+            <div class="select2-teal" multiple="" data-dropdown-css-class="select2-teal" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                {{ form_row(form.wishes, {'label':'Quelles sont vos envies?'}, {'attr': {'class': 'form-control'}}) }}
+                <script>
+                    $('.js-select2').select2({
+                        placeholder: 'Sélectionne tes envies dans la liste',
+                        allowClear: true,
+                        language: 'fr',
+                    });
+                </script>
+            </div>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-3">
             {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
-                $('.js-daterangepicker').daterangepicker({
+                $('.startPicker').daterangepicker({
                     startDate: moment(),
-                    endDate: moment().add('days', 1),
+                    singleDatePicker: true,
                     buttonClasses: ['btn btn-default bg-teal'],
                     applyClass: 'btn-small btn-primary',
                     cancelClass: 'btn-small',
@@ -47,9 +56,9 @@
         <div class="col-sm-3">
                 {{ form_row(form.dateEnd, {'label': 'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
             <script>
-                $('.js-daterangepicker').daterangepicker({
-                    startDate: moment(),
-                    endDate: moment().add('days', 1),
+                $('.endPicker').daterangepicker({
+                    startDate: moment().add(1,'days'),
+                    singleDatePicker: true,
                     buttonClasses: ['btn btn-default bg-teal'],
                     applyClass: 'btn-small btn-primary',
                     cancelClass: 'btn-small',
@@ -63,11 +72,6 @@
 
                 });
             </script>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="'col-sm-3">
-                {{ form_row(form.wish, {'label':'Sélectionne tes envies dans liste:'}, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <div class="form-group">

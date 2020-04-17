@@ -5,9 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\JoinTable;
-use Doctrine\ORM\Mapping\ManyToMany;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -30,16 +27,6 @@ class User extends AbstractEntity implements UserInterface
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
-    /**
-     * Many Users have Many Wishes.
-     * @ManyToMany(targetEntity="Wish")
-     * @JoinTable(name="user_wish",
-     *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="wish_id", referencedColumnName="id")}
-     *      )
-     */
-    private $wish;
 
 	/**
 	 * @var string
@@ -298,24 +285,6 @@ class User extends AbstractEntity implements UserInterface
     {
         $this->roles = $roles;
 
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getWish(): ArrayCollection
-    {
-        return $this->wish;
-    }
-
-    /**
-     * @param ArrayCollection $wish
-     * @return User
-     */
-    public function setWish(ArrayCollection $wish): User
-    {
-        $this->wish = $wish;
         return $this;
     }
 
