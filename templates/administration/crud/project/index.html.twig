@@ -40,9 +40,10 @@
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
                                 <td>{{ project.description }}</td>
+                                <td>Work in progress</td>
                                 <td>{{ project.dateStart ? project.dateStart|date('d-m-Y'):''}}</td>
                                 <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y'): ''}}</td>
-                                <td>{{ project.who }}</td>
+                                <td>Work in progress</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ path('project_show', {'id': project.id}) }}" class="btn bg-gradient-orange"><i class="fas fa-eye"></i></a>

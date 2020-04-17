@@ -24,7 +24,7 @@ class Wishes extends AbstractEntity
     /**
      * @var string|null
      *
-     * @ORM\Column(name="url", type="string", length=200, nullable=true)
+     * @ORM\Column(name="label", type="string", length=200, nullable=true)
      */
     private $label;
 

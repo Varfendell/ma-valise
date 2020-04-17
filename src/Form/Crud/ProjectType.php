@@ -21,12 +21,12 @@ class ProjectType extends AbstractType
     {
         $builder->add('name', TextType::class)
             ->add('wishes', EntityType::class, [
+                'required' => false,
                 'expanded' => false,
                 'multiple' => true,
                 'class' => Wishes::class,
-                'mapped' => false,
                 'label' => "Quelles sont tes envies?",
-                'choice_label' => 'nature',
+                'choice_label' => 'label',
                 'attr' => ['class' => 'js-select2']
             ])->add('dateStart', DateType::class, [
                 'widget' => 'single_text',
