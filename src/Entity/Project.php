@@ -31,8 +31,8 @@ class Project extends AbstractEntity
 
     /**
      * Quelles sont tes envies?
-     * Many Projects have Many Wishes.
-     * @ManyToMany(targetEntity="Wishes")
+     * Many Projects have Many Wish.
+     * @ManyToMany(targetEntity="Wish")
      * @JoinTable(name="projects_wishes",
      *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="wishes_id", referencedColumnName="id")}
@@ -116,10 +116,32 @@ class Project extends AbstractEntity
      * @param ArrayCollection $wishes
      * @return Project
      */
-    public function setWishes(ArrayCollection $wishes): Project
+    public function addWishes(Wish $wish): Project
+
     {
-        $this->wishes = $wishes;
+
+        if (!$this->wishes->contains($wish)) {
+
+            $this->wishes->add($wish);
+
+        }
+
         return $this;
+
+    }
+
+    public function removeWishes(Wish $wish): Project
+
+    {
+
+        if ($this->wishes->contains($wish)) {
+
+            $this->wishes->removeElement($wish);
+
+        }
+
+        return $this;
+
     }
 
 	public function getId(): ?int

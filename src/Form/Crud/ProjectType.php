@@ -5,7 +5,7 @@ namespace App\Form\Crud;
 use App\Entity\Cagnotte;
 use App\Entity\Project;
 use App\Entity\User;
-use App\Entity\Wishes;
+use App\Entity\Wish;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -24,7 +24,7 @@ class ProjectType extends AbstractType
                 'required' => false,
                 'expanded' => false,
                 'multiple' => true,
-                'class' => Wishes::class,
+                'class' => Wish::class,
                 'label' => "Quelles sont tes envies?",
                 'choice_label' => 'label',
                 'attr' => ['class' => 'js-select2']
