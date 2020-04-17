@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/administration")
+ * @Route("/")
  *
  * Class WelcomeController
  * @package App\Controller\Common

@@ -3,6 +3,7 @@
 
 namespace App\Controller\Common;
 
+use App\Entity\User;
 use App\Form\Common\AuthenticationType;
 use App\Form\Common\CreateAccountType;
 use App\Manager\UserManager;
@@ -11,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -72,18 +74,22 @@ class WelcomeController extends AbstractController
 	}
 
 	/**
-	 * @Route("/accueil")
+	 * @Route("/")
 	 *
 	 * @return RedirectResponse
 	 */
 	public function accueil()
 	{
-		$role = 'user';// 'admin';
-		if ($role == 'admin') {
-			return $this->redirectToRoute('app_administration_default_index');
+		if (empty($this->getUser())) {
+			return $this->redirectToRoute('login');
 		}
-		else {
+		$roles = $this->getUser()->getRoles();
+		if (in_array(User::ROLE_ADMIN, $roles)) {
+			return $this->redirectToRoute('app_administration_default_index');
+		} else if(in_array(User::ROLE_USER, $roles)){
 			return $this->redirectToRoute('app_front_default_index');
+		} else {
+			return $this->redirectToRoute('login');
 		}
 	}
 }
