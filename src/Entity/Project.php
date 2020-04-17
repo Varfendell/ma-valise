@@ -7,6 +7,9 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 
 /**
@@ -25,6 +28,16 @@ class Project extends AbstractEntity
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
+
+    /**
+     * Many Users have Many Groups.
+     * @ManyToMany(targetEntity="Wishes")
+     * @JoinTable(name="projects_wishes",
+     *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="wishes_id", referencedColumnName="id")}
+     *      )
+     */
+    private $wishes;
 
 	/**
 	 * @var string
@@ -86,7 +99,26 @@ class Project extends AbstractEntity
 	{
 		parent::__construct();
 		$this->participants = new ArrayCollection();
+        $this->wishes = new ArrayCollection();
 	}
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getWishes(): ArrayCollection
+    {
+        return $this->wishes;
+    }
+
+    /**
+     * @param ArrayCollection $wishes
+     * @return Project
+     */
+    public function setWishes(ArrayCollection $wishes): Project
+    {
+        $this->wishes = $wishes;
+        return $this;
+    }
 
 	public function getId(): ?int
 	{
