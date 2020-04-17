@@ -1,0 +1,51 @@
+{% extends 'Administration/default.html.twig' %}
+
+{% block title %}Hebergement index{% endblock %}
+
+{% block body %}
+    <h1>Hebergement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Mail</th>
+                <th>WebAddress</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Town</th>
+                <th>Localisation</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hebergement in hebergements %}
+            <tr>
+                <td>{{ hebergement.id }}</td>
+                <td>{{ hebergement.name }}</td>
+                <td>{{ hebergement.mail }}</td>
+                <td>{{ hebergement.webAddress }}</td>
+                <td>{{ hebergement.price }}</td>
+                <td>{{ hebergement.address }}</td>
+                <td>{{ hebergement.city }}</td>
+                <td>{{ hebergement.town }}</td>
+                <td>{{ hebergement.localisation }}</td>
+                <td>{{ hebergement.description }}</td>
+                <td>
+                    <a href="{{ path('hebergement_show', {'id': hebergement.id}) }}">show</a>
+                    <a href="{{ path('hebergement_edit', {'id': hebergement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hebergement_new') }}">Create new</a>
+{% endblock %}
