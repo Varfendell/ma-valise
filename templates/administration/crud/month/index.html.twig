@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Month index{% endblock %}
+
+{% block body %}
+    <h1>Month index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for month in months %}
+            <tr>
+                <td>{{ month.id }}</td>
+                <td>{{ month.label }}</td>
+                <td>
+                    <a href="{{ path('month_show', {'id': month.id}) }}">show</a>
+                    <a href="{{ path('month_edit', {'id': month.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('month_new') }}">Create new</a>
+{% endblock %}

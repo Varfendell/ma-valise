@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Month{% endblock %}
+
+{% block body %}
+    <h1>Month</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ month.id }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ month.label }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('month_index') }}">back to list</a>
+
+    <a href="{{ path('month_edit', {'id': month.id}) }}">edit</a>
+
+    {{ include('month/_delete_form.html.twig') }}
+{% endblock %}
