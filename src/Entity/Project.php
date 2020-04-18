@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 
 /**
@@ -55,17 +56,21 @@ class Project extends AbstractEntity
     private $dateStart;
 
     /**
+     * Avec qui?
+     *
+     * Many Projects have one withWho.
+
+     * @ManyToOne(targetEntity="WithWho")
+     * @JoinColumn(name="withWho_id", referencedColumnName="id")
+     */
+    private $withWho;
+
+    /**
      * @var DateTime|null
      *
      * @ORM\Column(name="date_end", type="date", nullable=true)
      */
     private $dateEnd;
-
-    /**
-     * Avec qui partir?
-     * @ORM\Column(name="who", type="array", nullable=false)
-     */
-    private $who;
 
 	/**
 	 * @var string|null
@@ -103,6 +108,24 @@ class Project extends AbstractEntity
 		    $this->participants = new ArrayCollection();
             $this->wishes = new ArrayCollection();
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getWithWho()
+    {
+        return $this->withWho;
+    }
+
+    /**
+     * @param mixed $withWho
+     * @return Project
+     */
+    public function setWithWho($withWho)
+    {
+        $this->withWho = $withWho;
+        return $this;
+    }
 
     /**
      * @return ArrayCollection
@@ -182,17 +205,6 @@ class Project extends AbstractEntity
     {
         $this->dateEnd = $dateEnd;
 
-        return $this;
-    }
-
-    public function getWho()
-    {
-        return $this->who;
-    }
-
-    public function setWho($who)
-    {
-        $this->who = $who;
         return $this;
     }
 

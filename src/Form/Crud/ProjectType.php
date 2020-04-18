@@ -6,9 +6,9 @@ use App\Entity\Cagnotte;
 use App\Entity\Project;
 use App\Entity\User;
 use App\Entity\Wish;
+use App\Entity\WithWho;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -36,15 +36,13 @@ class ProjectType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => ['class' => 'endPicker'],
                 'html5' => false,
-            ])->add('who', ChoiceType::class, [
+            ])->add('withWho', EntityType::class, [
                 'required' => true,
-                'choices' => [
-                    'Seul(e)' => false,
-                    'En couple' => false,
-                    'En famille' => false,
-                    'Entre amis' => false],
                 'expanded' => true,
-                'multiple' => false
+                'multiple' => false,
+                'class' => WithWho::class,
+                'label' => "Avec qui?",
+                'choice_label' => 'label',
             ])->add('description', TextareaType::class)
             ->add('cagnotte', EntityType::class, [
                 'class' => Cagnotte::class,
