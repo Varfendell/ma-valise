@@ -2,9 +2,10 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "almasaeed2010/adminlte": "~3.0",
         "laminas/laminas-code": "^3.4",
         "sensio/framework-extra-bundle": "^5.5",
@@ -18,9 +19,10 @@
         "symfony/http-client": "5.0.*",
         "symfony/intl": "5.0.*",
         "symfony/mailer": "5.0.*",
+        "symfony/maker-bundle": "^1.15",
         "symfony/monolog-bundle": "^3.1",
         "symfony/notifier": "5.0.*",
-        "symfony/orm-pack": "*",
+        "symfony/orm-pack": "^1.0",
         "symfony/process": "5.0.*",
         "symfony/security-bundle": "5.0.*",
         "symfony/security-core": "5.0.*",
@@ -33,12 +35,10 @@
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
         "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "5.0.*",
-        "ext-json": "*"
+        "symfony/yaml": "5.0.*"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
-        "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*"
     },

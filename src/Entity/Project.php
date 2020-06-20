@@ -7,6 +7,11 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
+
 
 /**
  * Project
@@ -25,6 +30,17 @@ class Project extends AbstractEntity
 	 */
 	private $id;
 
+    /**
+     * Quelles sont tes envies?
+     * Many Projects have Many Wish.
+     * @ManyToMany(targetEntity="Wish")
+     * @JoinTable(name="projects_wishes",
+     *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="wishes_id", referencedColumnName="id")}
+     *      )
+     */
+    private $wishes;
+
 	/**
 	 * @var string
 	 *
@@ -32,19 +48,29 @@ class Project extends AbstractEntity
 	 */
 	private $name;
 
-	/**
-	 * @var DateTime|null
-	 *
-	 * @ORM\Column(name="date_start", type="date", nullable=true)
-	 */
-	private $dateStart;
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="date_start", type="date", nullable=true)
+     */
+    private $dateStart;
 
-	/**
-	 * @var DateTime|null
-	 *
-	 * @ORM\Column(name="date_end", type="date", nullable=true)
-	 */
-	private $dateEnd;
+    /**
+     * Avec qui?
+     *
+     * Many Projects have one withWho.
+
+     * @ManyToOne(targetEntity="WithWho")
+     * @JoinColumn(name="withWho_id", referencedColumnName="id")
+     */
+    private $withWho;
+
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="date_end", type="date", nullable=true)
+     */
+    private $dateEnd;
 
 	/**
 	 * @var string|null
@@ -79,8 +105,67 @@ class Project extends AbstractEntity
 	public function __construct()
 	{
 		parent::__construct();
-		$this->participants = new ArrayCollection();
+		    $this->participants = new ArrayCollection();
+            $this->wishes = new ArrayCollection();
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getWithWho()
+    {
+        return $this->withWho;
+    }
+
+    /**
+     * @param mixed $withWho
+     * @return Project
+     */
+    public function setWithWho($withWho)
+    {
+        $this->withWho = $withWho;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getWishes(): ArrayCollection
+    {
+        return $this->wishes;
+    }
+
+    /**
+     * @param ArrayCollection $wishes
+     * @return Project
+     */
+    public function addWishes(Wish $wish): Project
+
+    {
+
+        if (!$this->wishes->contains($wish)) {
+
+            $this->wishes->add($wish);
+
+        }
+
+        return $this;
+
+    }
+
+    public function removeWishes(Wish $wish): Project
+
+    {
+
+        if ($this->wishes->contains($wish)) {
+
+            $this->wishes->removeElement($wish);
+
+        }
+
+        return $this;
+
+    }
 
 	public function getId(): ?int
 	{
@@ -99,41 +184,41 @@ class Project extends AbstractEntity
 		return $this;
 	}
 
-	public function getDateStart(): ?DateTimeInterface
-	{
-		return $this->dateStart;
-	}
+    public function getDateStart(): ?DateTimeInterface
+    {
+        return $this->dateStart;
+    }
 
-	public function setDateStart(?DateTimeInterface $dateStart): self
-	{
-		$this->dateStart = $dateStart;
+    public function setDateStart(?DateTimeInterface $dateStart): self
+    {
+        $this->dateStart = $dateStart;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getDateEnd(): ?DateTimeInterface
-	{
-		return $this->dateEnd;
-	}
+    public function getDateEnd(): ?DateTimeInterface
+    {
+        return $this->dateEnd;
+    }
 
-	public function setDateEnd(?DateTimeInterface $dateEnd): self
-	{
-		$this->dateEnd = $dateEnd;
+    public function setDateEnd(?DateTimeInterface $dateEnd): self
+    {
+        $this->dateEnd = $dateEnd;
 
-		return $this;
-	}
+        return $this;
+    }
 
 	public function getDescription(): ?string
-	{
-		return $this->description;
-	}
+{
+    return $this->description;
+}
 
-	public function setDescription(?string $description): self
-	{
-		$this->description = $description;
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
-		return $this;
-	}
+        return $this;
+    }
 
 	public function getCagnotte(): ?Cagnotte
 	{
