@@ -91,64 +91,64 @@ class User extends AbstractEntity implements UserInterface
 	private $roles;
 
 	public function __construct()
-	{
-		parent::__construct();
-		$this->projects = new ArrayCollection();
-		$this->roles = json_encode([]);
-	}
+   	{
+   		parent::__construct();
+            $this->projects = new ArrayCollection();
+            $this->roles = json_encode([]);
+   	}
 
 	public function getId(): ?int
-	{
-		return $this->id;
-	}
+   	{
+   		return $this->id;
+   	}
 
 	public function getPhone(): ?string
-	{
-		return $this->phone;
-	}
+   	{
+   		return $this->phone;
+   	}
 
 	public function setPhone(?string $phone): self
-	{
-		$this->phone = $phone;
-
-		return $this;
-	}
+   	{
+   		$this->phone = $phone;
+   
+   		return $this;
+   	}
 
 	public function getPassword(): ?string
-	{
-		return $this->password;
-	}
+   	{
+   		return $this->password;
+   	}
 
 	public function setPassword(string $password): self
-	{
-		$this->password = $password;
-
-		return $this;
-	}
+   	{
+   		$this->password = $password;
+   
+   		return $this;
+   	}
 
 	public function getSalt(): ?string
-	{
-		return $this->salt;
-	}
+   	{
+   		return $this->salt;
+   	}
 
 	public function setSalt(string $salt): self
-	{
-		$this->salt = $salt;
-
-		return $this;
-	}
+   	{
+   		$this->salt = $salt;
+   
+   		return $this;
+   	}
 
 	public function getCity(): ?string
-	{
-		return $this->city;
-	}
+   	{
+   		return $this->city;
+   	}
 
 	public function setCity(?string $city): self
-	{
-		$this->city = $city;
-
-		return $this;
-	}
+   	{
+   		$this->city = $city;
+   
+   		return $this;
+   	}
 
 	/**
 	 * Returns the roles granted to the user.
@@ -165,27 +165,27 @@ class User extends AbstractEntity implements UserInterface
 	 * @return string[] The user roles
 	 */
 	public function getRoles()
-	{
-		return json_decode($this->roles);
-	}
+   	{
+   		return json_decode($this->roles);
+   	}
 
 	/**
 	 * @return $this
 	 */
 	public function setRoleAdmin(): User
-	{
-		$this->roles = json_encode([self::ROLE_ADMIN]);
-		return $this;
-	}
+   	{
+   		$this->roles = json_encode([self::ROLE_ADMIN]);
+   		return $this;
+   	}
 
 	/**
 	 * @return $this
 	 */
 	public function setRoleUser(): User
-	{
-		$this->roles = json_encode([self::ROLE_USER]);
-		return $this;
-	}
+   	{
+   		$this->roles = json_encode([self::ROLE_USER]);
+   		return $this;
+   	}
 
 	/**
 	 * Returns the username used to authenticate the user.
@@ -193,21 +193,21 @@ class User extends AbstractEntity implements UserInterface
 	 * @return string The username
 	 */
 	public function getUsername()
-	{
-		return $this->getEmail();
-	}
+   	{
+   		return $this->getEmail();
+   	}
 
 	public function getEmail(): ?string
-	{
-		return $this->email;
-	}
+   	{
+   		return $this->email;
+   	}
 
 	public function setEmail(string $email): self
-	{
-		$this->email = $email;
-
-		return $this;
-	}
+   	{
+   		$this->email = $email;
+   
+   		return $this;
+   	}
 
 	/**
 	 * Removes sensitive data from the user.
@@ -216,67 +216,76 @@ class User extends AbstractEntity implements UserInterface
 	 * the plain-text password is stored on this object.
 	 */
 	public function eraseCredentials()
-	{
-		// TODO: Implement eraseCredentials() method.
-	}
+   	{
+   		// TODO: Implement eraseCredentials() method.
+   	}
 
 	/**
 	 * @return Collection
 	 */
 	public function getProjects(): Collection
-	{
-		return $this->projects;
-	}
+   	{
+   		return $this->projects;
+   	}
 
 	public function getFirstNameLastName()
-	{
-		return $this->getFirstName() . ' ' . $this->getLastName();
-	}
+   	{
+   		return $this->getFirstName() . ' ' . $this->getLastName();
+   	}
 
 	public function getFirstName(): ?string
-	{
-		return $this->firstName;
-	}
+   	{
+   		return $this->firstName;
+   	}
 
 	public function setFirstName(string $firstName): self
-	{
-		$this->firstName = $firstName;
-
-		return $this;
-	}
+   	{
+   		$this->firstName = $firstName;
+   
+   		return $this;
+   	}
 
 	public function getLastName(): ?string
-	{
-		return $this->lastName;
-	}
+   	{
+   		return $this->lastName;
+   	}
 
 	public function setLastName(string $lastName): self
-	{
-		$this->lastName = $lastName;
-
-		return $this;
-	}
+   	{
+   		$this->lastName = $lastName;
+   
+   		return $this;
+   	}
 
 	public function addProject(Project $project): self
-	{
-		if (!$this->projects->contains($project)) {
-			$this->projects[] = $project;
-			$project->setUser($this);
-		}
-
-		return $this;
-	}
+   	{
+   		if (!$this->projects->contains($project)) {
+   			$this->projects[] = $project;
+   			$project->setUser($this);
+   		}
+   
+   		return $this;
+   	}
 
 	public function removeProject(Project $project): self
-	{
-		if ($this->projects->contains($project)) {
-			$this->projects->removeElement($project);
-			// set the owning side to null (unless already changed)
-			if ($project->getUser() === $this) {
-				$project->setUser(null);
-			}
-		}
+   	{
+   		if ($this->projects->contains($project)) {
+   			$this->projects->removeElement($project);
+   			// set the owning side to null (unless already changed)
+   			if ($project->getUser() === $this) {
+   				$project->setUser(null);
+   			}
+   		}
+   
+   		return $this;
+   	}
 
-		return $this;
-	}
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+
 }
