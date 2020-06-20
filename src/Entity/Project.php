@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
+
 
 /**
  * Project
@@ -28,22 +30,23 @@ class Project extends AbstractEntity
 	 */
 	private $id;
 
+    /**
+     * Quelles sont tes envies?
+     * Many Projects have Many Wish.
+     * @ManyToMany(targetEntity="Wish")
+     * @JoinTable(name="projects_wishes",
+     *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="wishes_id", referencedColumnName="id")}
+     *      )
+     */
+    private $wishes;
+
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="name", type="string", length=100, nullable=false)
 	 */
 	private $name;
-
-    /**
-     * Many Projects have Many Wishes.
-     * @ManyToMany(targetEntity="Wish")
-     * @JoinTable(name="project_wish",
-     *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="project_id", referencedColumnName="id")}
-     *      )
-     */
-    private $wish;
 
     /**
      * @var DateTime|null
@@ -53,21 +56,21 @@ class Project extends AbstractEntity
     private $dateStart;
 
     /**
+     * Avec qui?
+     *
+     * Many Projects have one withWho.
+
+     * @ManyToOne(targetEntity="WithWho")
+     * @JoinColumn(name="withWho_id", referencedColumnName="id")
+     */
+    private $withWho;
+
+    /**
      * @var DateTime|null
      *
      * @ORM\Column(name="date_end", type="date", nullable=true)
      */
     private $dateEnd;
-
-    /**
-     * @ORM\Column(name="desires", type="array", nullable=false)
-     */
-    private $desires;
-
-    /**
-     * @ORM\Column(name="who", type="array", nullable=false)
-     */
-    private $who;
 
 	/**
 	 * @var string|null
@@ -102,26 +105,66 @@ class Project extends AbstractEntity
 	public function __construct()
 	{
 		parent::__construct();
-        $this->wish = new ArrayCollection();
-		$this->participants = new ArrayCollection();
+		    $this->participants = new ArrayCollection();
+            $this->wishes = new ArrayCollection();
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getWithWho()
+    {
+        return $this->withWho;
+    }
+
+    /**
+     * @param mixed $withWho
+     * @return Project
+     */
+    public function setWithWho($withWho)
+    {
+        $this->withWho = $withWho;
+        return $this;
+    }
 
     /**
      * @return ArrayCollection
      */
-    public function getWish(): ArrayCollection
+    public function getWishes(): ArrayCollection
     {
-        return $this->wish;
+        return $this->wishes;
     }
 
     /**
-     * @param ArrayCollection $wish
+     * @param ArrayCollection $wishes
      * @return Project
      */
-    public function setWish(ArrayCollection $wish): Project
+    public function addWishes(Wish $wish): Project
+
     {
-        $this->wish = $wish;
+
+        if (!$this->wishes->contains($wish)) {
+
+            $this->wishes->add($wish);
+
+        }
+
         return $this;
+
+    }
+
+    public function removeWishes(Wish $wish): Project
+
+    {
+
+        if ($this->wishes->contains($wish)) {
+
+            $this->wishes->removeElement($wish);
+
+        }
+
+        return $this;
+
     }
 
 	public function getId(): ?int
@@ -162,28 +205,6 @@ class Project extends AbstractEntity
     {
         $this->dateEnd = $dateEnd;
 
-        return $this;
-    }
-
-    public function getDesires()
-    {
-        return $this->desires;
-    }
-
-    public function setDesires($desires)
-    {
-        $this->desires = $desires;
-        return $this;
-    }
-
-    public function getWho()
-    {
-        return $this->who;
-    }
-
-    public function setWho($who)
-    {
-        $this->who = $who;
         return $this;
     }
 

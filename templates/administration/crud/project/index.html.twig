@@ -40,6 +40,10 @@
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
                                 <td>{{ project.description }}</td>
+                                <td>Work in progress</td>
+                                <td>{{ project.dateStart ? project.dateStart|date('d-m-Y'):''}}</td>
+                                <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y'): ''}}</td>
+                                <td>Work in progress</td>
                                 <td>{% for desire in project.desires %}
                                         {{ desire }}
                                     {% endfor %}</td>
@@ -55,7 +59,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="8">no records found</td>
+                                <td colspan="8">Aucun projet enregistré</td>
                             </tr>
                         {% endfor %}
                         </tbody>

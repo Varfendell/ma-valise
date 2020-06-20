@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Wish
+ * WithWho
  *
- * @ORM\Table(name="wishes")
+ * @ORM\Table(name="withWho")
  * @ORM\Entity
  */
-class Wish extends AbstractEntity
+class WithWho extends AbstractEntity
 {
     /**
      * @var int
@@ -38,9 +38,9 @@ class Wish extends AbstractEntity
 
     /**
      * @param int $id
-     * @return Wish
+     * @return WithWho
      */
-    public function setId(int $id): Wish
+    public function setId(int $id): WithWho
     {
         $this->id = $id;
         return $this;
@@ -56,9 +56,9 @@ class Wish extends AbstractEntity
 
     /**
      * @param string|null $label
-     * @return Wish
+     * @return WithWho
      */
-    public function setLabel(?string $label): Wish
+    public function setLabel(?string $label): WithWho
     {
         $this->label = $label;
         return $this;
