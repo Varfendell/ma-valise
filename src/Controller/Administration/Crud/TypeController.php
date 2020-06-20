@@ -3,7 +3,7 @@
 namespace App\Controller\Administration\Crud;
 
 use App\Entity\Type;
-use App\Form\TypeType;
+use App\Form\Crud\TypeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +30,8 @@ class TypeController extends AbstractController
 
     /**
      * @Route("/new", name="type_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -53,6 +55,8 @@ class TypeController extends AbstractController
 
     /**
      * @Route("/{id}", name="type_show", methods={"GET"})
+     * @param Type $type
+     * @return Response
      */
     public function show(Type $type): Response
     {
@@ -63,6 +67,9 @@ class TypeController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="type_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Type $type
+     * @return Response
      */
     public function edit(Request $request, Type $type): Response
     {
@@ -83,6 +90,9 @@ class TypeController extends AbstractController
 
     /**
      * @Route("/{id}", name="type_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Type $type
+     * @return Response
      */
     public function delete(Request $request, Type $type): Response
     {

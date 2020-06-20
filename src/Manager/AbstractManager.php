@@ -3,8 +3,8 @@
 namespace App\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\ORMException;
+use Doctrine\Persistence\ObjectRepository;
 use LogicException;
 
 /**
@@ -19,15 +19,15 @@ abstract class AbstractManager
 	/**
 	 * @var string $entity
 	 */
-	protected $entityClassName;
+    protected string $entityClassName;
 	/**
 	 * @var EntityManagerInterface
 	 */
-	protected $entityManager;
+    protected EntityManagerInterface $entityManager;
 	/**
-	 * @var EntityRepository $repository
+	 * @var ObjectRepository $repository
 	 */
-	private $repository;
+    private ObjectRepository $repository;
 
 	/**
 	 * AbstractManager constructor.

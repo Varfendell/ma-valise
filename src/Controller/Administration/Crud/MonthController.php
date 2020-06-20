@@ -3,7 +3,7 @@
 namespace App\Controller\Administration\Crud;
 
 use App\Entity\Month;
-use App\Form\MonthType;
+use App\Form\Crud\MonthType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +30,8 @@ class MonthController extends AbstractController
 
     /**
      * @Route("/new", name="month_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -53,6 +55,8 @@ class MonthController extends AbstractController
 
     /**
      * @Route("/{id}", name="month_show", methods={"GET"})
+     * @param Month $month
+     * @return Response
      */
     public function show(Month $month): Response
     {
@@ -63,6 +67,9 @@ class MonthController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="month_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Month $month
+     * @return Response
      */
     public function edit(Request $request, Month $month): Response
     {
@@ -83,6 +90,9 @@ class MonthController extends AbstractController
 
     /**
      * @Route("/{id}", name="month_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Month $month
+     * @return Response
      */
     public function delete(Request $request, Month $month): Response
     {

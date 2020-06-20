@@ -3,7 +3,7 @@
 namespace App\Controller\Administration\Crud;
 
 use App\Entity\Hebergement;
-use App\Form\HebergementType;
+use App\Form\Crud\HebergementType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +30,8 @@ class HebergementController extends AbstractController
 
     /**
      * @Route("/new", name="hebergement_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -53,6 +55,8 @@ class HebergementController extends AbstractController
 
     /**
      * @Route("/{id}", name="hebergement_show", methods={"GET"})
+     * @param Hebergement $hebergement
+     * @return Response
      */
     public function show(Hebergement $hebergement): Response
     {
@@ -63,6 +67,9 @@ class HebergementController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="hebergement_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Hebergement $hebergement
+     * @return Response
      */
     public function edit(Request $request, Hebergement $hebergement): Response
     {
@@ -83,6 +90,9 @@ class HebergementController extends AbstractController
 
     /**
      * @Route("/{id}", name="hebergement_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Hebergement $hebergement
+     * @return Response
      */
     public function delete(Request $request, Hebergement $hebergement): Response
     {

@@ -136,7 +136,7 @@ class Project extends AbstractEntity
     }
 
     /**
-     * @param ArrayCollection $wishes
+     * @param Wish $wish
      * @return Project
      */
     public function addWishes(Wish $wish): Project

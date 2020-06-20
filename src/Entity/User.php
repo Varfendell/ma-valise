@@ -26,56 +26,56 @@ class User extends AbstractEntity implements UserInterface
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
-	private $id;
+    private int $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="first_name", type="string", length=100, nullable=false)
 	 */
-	private $firstName;
+    private string $firstName;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="last_name", type="string", length=100, nullable=false)
 	 */
-	private $lastName;
+    private string $lastName;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="email", type="string", length=100, nullable=false)
 	 */
-	private $email;
+    private string $email;
 
 	/**
 	 * @var string|null
 	 *
 	 * @ORM\Column(name="phone", type="string", length=100, nullable=true)
 	 */
-	private $phone;
+    private ?string $phone;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="password", type="string", length=100, nullable=false)
 	 */
-	private $password;
+    private string $password;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="salt", type="string", length=100, nullable=false)
 	 */
-	private $salt;
+    private string $salt;
 
 	/**
 	 * @var string|null
 	 *
 	 * @ORM\Column(name="city", type="string", length=100, nullable=true)
 	 */
-	private $city;
+    private ?string $city;
 
 	/**
 	 * @var Collection

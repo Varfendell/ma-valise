@@ -3,7 +3,7 @@
 namespace App\Controller\Administration\Crud;
 
 use App\Entity\Photo;
-use App\Form\PhotoType;
+use App\Form\Crud\PhotoType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +30,8 @@ class PhotoController extends AbstractController
 
     /**
      * @Route("/new", name="photo_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -53,6 +55,8 @@ class PhotoController extends AbstractController
 
     /**
      * @Route("/{id}", name="photo_show", methods={"GET"})
+     * @param Photo $photo
+     * @return Response
      */
     public function show(Photo $photo): Response
     {
@@ -63,6 +67,9 @@ class PhotoController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="photo_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Photo $photo
+     * @return Response
      */
     public function edit(Request $request, Photo $photo): Response
     {
@@ -83,6 +90,9 @@ class PhotoController extends AbstractController
 
     /**
      * @Route("/{id}", name="photo_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Photo $photo
+     * @return Response
      */
     public function delete(Request $request, Photo $photo): Response
     {

@@ -3,7 +3,7 @@
 namespace App\Controller\Administration\Crud;
 
 use App\Entity\Hashtag;
-use App\Form\HashtagType;
+use App\Form\Crud\HashtagType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
