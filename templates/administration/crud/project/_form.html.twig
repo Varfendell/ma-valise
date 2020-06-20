@@ -1,15 +1,86 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {{ form_start(form) }}
-<div class="form-group">
-    {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+<div class="container">
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.user, {'label':'Utilisateur'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.name, {'label':'Quel est le nom de ton projet?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            {{ form_row(form.description, {'label':'Quelle est ton idée de projet?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="'col-sm-3 col-sm-12">
+            <div class="select2-teal" multiple="" data-dropdown-css-class="select2-teal" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                {{ form_row(form.wishes, {'label':'Quelles sont vos envies?'}, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+                {{ form_row(form.dateEnd, {'label': 'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <strong>{{ form_row(form.withWho, {'label': 'Avec qui?'}, {'attr': {'class': 'form-control'}}) }}</strong>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.cagnotte, {'label':'Avec quelle cagnotte?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <button class="btn btn-default bg-teal">Sauvegarder</button>
 </div>
-<div class="form-group">
-    {{ form_row(form.user, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="form-group">
-    {{ form_row(form.cagnotte, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="form-group">
-    {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
-</div>
-<button class="btn btn-default">Sauvegarder</button>
 {{ form_end(form) }}
+
+<script>
+    $('.js-select2').select2({
+        placeholder: 'Sélectionne tes envies dans la liste',
+        allowClear: true,
+        language: 'fr',
+    });
+    $('.startPicker').daterangepicker({
+        startDate: moment(),
+        singleDatePicker: true,
+        buttonClasses: ['btn btn-default bg-teal'],
+        applyClass: 'btn-small btn-primary',
+        cancelClass: 'btn-small',
+        locale: {
+            applyLabel: 'Valider',
+            cancelLabel: 'Annuler',
+            daysOfWeek: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa','Di'],
+            monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            format: 'YYYY-MM-DD'
+        }
+
+    });
+    $('.endPicker').daterangepicker({
+        startDate: moment().add(1,'days'),
+        singleDatePicker: true,
+        buttonClasses: ['btn btn-default bg-teal'],
+        applyClass: 'btn-small btn-primary',
+        cancelClass: 'btn-small',
+        locale: {
+            applyLabel: 'Valider',
+            cancelLabel: 'Annuler',
+            daysOfWeek: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa','Di'],
+            monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            format: 'YYYY-MM-DD'
+        }
+
+    });
+</script>

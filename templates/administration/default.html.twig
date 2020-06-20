@@ -19,6 +19,29 @@
                     </div>
                 </div>
                 <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="{{ path('user_index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Utilisateurs</p>
+                            </a>
+                        <li class="nav-item">
+                            <a href="{{ path('project_index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-plane"></i>
+                                <p>Mes projets</p>
+                            </a>
+                        <li class="nav-item">
+                            <a href="{{ path('cagnotte_index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-box"></i>
+                                <p>Cagnottes</p>
+                            </a>
+                        <li class="nav-item">
+                            <a href="{{ path('participant_index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Participants</p>
+                            </a>
+                        </li>
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         {% include 'administration/base/_menu.html.twig' %}
                     </ul>

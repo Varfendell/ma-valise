@@ -1,21 +1,21 @@
 {% extends 'Administration/default.html.twig' %}
 
-{% block title %}Projets{% endblock %}
-{% block header %}Projets{% endblock %}
+{% block title %}Mes projets{% endblock %}
+{% block header %}Mes projets{% endblock %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fa fa-paperclip"></i>
-                        Liste des Projets
+                        Liste de mes projets
                     </h3>
                     <div class="card-tools">
                         <ul class="nav nav-pills ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ path('project_new') }}">Create new</a>
+                                <a class="nav-link active bg-teal" href="{{ path('project_new') }}">Nouveau projet <i class="fa fa-plus"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -24,12 +24,14 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>DateStart</th>
-                            <th>DateEnd</th>
+                            <th>N°</th>
+                            <th>Nom</th>
                             <th>Description</th>
-                            <th>actions</th>
+                            <th>Envies</th>
+                            <th>Date de départ souhaitée</th>
+                            <th>Date de retour souhaitée</th>
+                            <th>Avec qui?</th>
+                            <th>Voir/Editer mon projet</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -37,9 +39,11 @@
                             <tr>
                                 <td>{{ project.id }}</td>
                                 <td>{{ project.name }}</td>
-                                <td>{{ project.dateStart ? project.dateStart|date('Y-m-d') : '' }}</td>
-                                <td>{{ project.dateEnd ? project.dateEnd|date('Y-m-d') : '' }}</td>
                                 <td>{{ project.description }}</td>
+                                <td>Work in progress</td>
+                                <td>{{ project.dateStart ? project.dateStart|date('d-m-Y'):''}}</td>
+                                <td>{{ project.dateEnd ? project.dateEnd|date('d-m-Y'): ''}}</td>
+                                <td>Work in progress</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ path('project_show', {'id': project.id}) }}" class="btn bg-gradient-orange"><i class="fas fa-eye"></i></a>
@@ -49,7 +53,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="6">no records found</td>
+                                <td colspan="8">Aucun projet enregistré</td>
                             </tr>
                         {% endfor %}
                         </tbody>

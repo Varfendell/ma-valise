@@ -27,5 +27,4 @@ class AbstractEntity
 		$this->dateCreate = new DateTime();
 	}
 
-
 }
