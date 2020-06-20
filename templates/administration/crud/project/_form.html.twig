@@ -1,15 +1,85 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {{ form_start(form) }}
-<div class="form-group">
-    {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+<div class="container">
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.user, {'label':'Utilisateur'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.name, {'label':'Quel est le nom de ton projet?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            {{ form_row(form.description, {'label':'Quelle est ton idée de projet?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <strong>{{ form_row(form.desires, {'label':'Quelles sont tes envies?'}, {'attr': {'class': 'form-check'}}) }}</strong>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.dateStart, {'label':'Quand souhaites-tu partir?'}, {'attr': {'class': 'form-control'}}) }}
+            <script>
+                $('.js-daterangepicker').daterangepicker({
+                    startDate: moment(),
+                    endDate: moment().add('days', 1),
+                    buttonClasses: ['btn btn-default bg-teal'],
+                    applyClass: 'btn-small btn-primary',
+                    cancelClass: 'btn-small',
+                    locale: {
+                        applyLabel: 'Valider',
+                        cancelLabel: 'Annuler',
+                        daysOfWeek: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa','Di'],
+                        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                        format: 'YYYY-MM-DD'
+                    }
+
+                });
+            </script>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+                {{ form_row(form.dateEnd, {'label': 'Quand souhaites-tu revenir?'}, {'attr': {'class': 'form-control'}}) }}
+            <script>
+                $('.js-daterangepicker').daterangepicker({
+                    startDate: moment(),
+                    endDate: moment().add('days', 1),
+                    buttonClasses: ['btn btn-default bg-teal'],
+                    applyClass: 'btn-small btn-primary',
+                    cancelClass: 'btn-small',
+                    locale: {
+                        applyLabel: 'Valider',
+                        cancelLabel: 'Annuler',
+                        daysOfWeek: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa','Di'],
+                        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                        format: 'YYYY-MM-DD'
+                    }
+
+                });
+            </script>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="'col-sm-3">
+                {{ form_row(form.wish, {'label':'Sélectionne tes envies dans liste:'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <strong>{{ form_row(form.who, {'label': 'Avec qui?'}, {'attr': {'class': 'form-control'}}) }}</strong>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ form_row(form.cagnotte, {'label':'Avec quelle cagnotte?'}, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <button class="btn btn-default bg-teal">Sauvegarder</button>
 </div>
-<div class="form-group">
-    {{ form_row(form.user, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="form-group">
-    {{ form_row(form.cagnotte, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="form-group">
-    {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
-</div>
-<button class="btn btn-default">Sauvegarder</button>
 {{ form_end(form) }}

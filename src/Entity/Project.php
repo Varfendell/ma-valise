@@ -7,6 +7,9 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
  * Project
@@ -32,19 +35,39 @@ class Project extends AbstractEntity
 	 */
 	private $name;
 
-	/**
-	 * @var DateTime|null
-	 *
-	 * @ORM\Column(name="date_start", type="date", nullable=true)
-	 */
-	private $dateStart;
+    /**
+     * Many Projects have Many Wishes.
+     * @ManyToMany(targetEntity="Wish")
+     * @JoinTable(name="project_wish",
+     *      joinColumns={@JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="project_id", referencedColumnName="id")}
+     *      )
+     */
+    private $wish;
 
-	/**
-	 * @var DateTime|null
-	 *
-	 * @ORM\Column(name="date_end", type="date", nullable=true)
-	 */
-	private $dateEnd;
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="date_start", type="date", nullable=true)
+     */
+    private $dateStart;
+
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="date_end", type="date", nullable=true)
+     */
+    private $dateEnd;
+
+    /**
+     * @ORM\Column(name="desires", type="array", nullable=false)
+     */
+    private $desires;
+
+    /**
+     * @ORM\Column(name="who", type="array", nullable=false)
+     */
+    private $who;
 
 	/**
 	 * @var string|null
@@ -79,8 +102,27 @@ class Project extends AbstractEntity
 	public function __construct()
 	{
 		parent::__construct();
+        $this->wish = new ArrayCollection();
 		$this->participants = new ArrayCollection();
 	}
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getWish(): ArrayCollection
+    {
+        return $this->wish;
+    }
+
+    /**
+     * @param ArrayCollection $wish
+     * @return Project
+     */
+    public function setWish(ArrayCollection $wish): Project
+    {
+        $this->wish = $wish;
+        return $this;
+    }
 
 	public function getId(): ?int
 	{
@@ -99,41 +141,63 @@ class Project extends AbstractEntity
 		return $this;
 	}
 
-	public function getDateStart(): ?DateTimeInterface
-	{
-		return $this->dateStart;
-	}
+    public function getDateStart(): ?DateTimeInterface
+    {
+        return $this->dateStart;
+    }
 
-	public function setDateStart(?DateTimeInterface $dateStart): self
-	{
-		$this->dateStart = $dateStart;
+    public function setDateStart(?DateTimeInterface $dateStart): self
+    {
+        $this->dateStart = $dateStart;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getDateEnd(): ?DateTimeInterface
-	{
-		return $this->dateEnd;
-	}
+    public function getDateEnd(): ?DateTimeInterface
+    {
+        return $this->dateEnd;
+    }
 
-	public function setDateEnd(?DateTimeInterface $dateEnd): self
-	{
-		$this->dateEnd = $dateEnd;
+    public function setDateEnd(?DateTimeInterface $dateEnd): self
+    {
+        $this->dateEnd = $dateEnd;
 
-		return $this;
-	}
+        return $this;
+    }
+
+    public function getDesires()
+    {
+        return $this->desires;
+    }
+
+    public function setDesires($desires)
+    {
+        $this->desires = $desires;
+        return $this;
+    }
+
+    public function getWho()
+    {
+        return $this->who;
+    }
+
+    public function setWho($who)
+    {
+        $this->who = $who;
+        return $this;
+    }
 
 	public function getDescription(): ?string
-	{
-		return $this->description;
-	}
+{
+    return $this->description;
+}
 
-	public function setDescription(?string $description): self
-	{
-		$this->description = $description;
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
-		return $this;
-	}
+        return $this;
+    }
 
 	public function getCagnotte(): ?Cagnotte
 	{
