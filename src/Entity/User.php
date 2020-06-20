@@ -17,7 +17,7 @@ class User extends AbstractEntity implements UserInterface
 {
 	const ROLE_ADMIN = 'ROLE_ADMIN';
 	const ROLE_USER = 'ROLE_USER';
-
+	const ROLE_AGENCE = 'ROLE_AGENCE';
 
 	/**
 	 * @var int

@@ -85,6 +85,8 @@ class WelcomeController extends AbstractController
 		$roles = $this->getUser()->getRoles();
 		if (in_array(User::ROLE_ADMIN, $roles)) {
 			return $this->redirectToRoute('app_administration_default_index');
+		} else if(in_array(User::ROLE_AGENCE, $roles)){
+			return $this->redirectToRoute('agence_index');
 		} else if(in_array(User::ROLE_USER, $roles)){
 			return $this->redirectToRoute('app_front_default_index');
 		} else {
